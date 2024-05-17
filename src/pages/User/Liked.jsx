@@ -2,7 +2,7 @@ import React from "react";
 import homeBg from "../../assets/homeBg.png";
 import Header from "../../components/Header";
 
-function UserHome() {
+function Liked() {
   return (
     <div
       style={{
@@ -19,4 +19,4 @@ function UserHome() {
   );
 }
 
-export default UserHome;
+export default Liked;

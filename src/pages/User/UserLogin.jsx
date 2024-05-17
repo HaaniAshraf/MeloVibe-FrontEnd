@@ -5,6 +5,7 @@ import userLoginBg from "../../assets/user/login-bg.jpg";
 function UserLogin() {
   return (
     <LoginForm
+      heading=''
       bgImage={userLoginBg}
       signupLink="/signup"
       className="flex items-center"

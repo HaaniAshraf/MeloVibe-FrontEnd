@@ -81,7 +81,7 @@ function LoginForm({ bgImage, signupLink, className }) {
             </Form>
           )}
         </Formik>
-        <h4 className="text-center mt-4 text-gray-500">Forgot Password ?</h4>
+        <h4 className="text-center mt-4 text-gray-500 hover:text-gray-400">Forgot Password ?</h4>
         <div className="text-center mt-4 text-gray-400 xxs:text-sm xs:text-base">
           New to MeloVibe ?
           <Link to={signupLink}>
