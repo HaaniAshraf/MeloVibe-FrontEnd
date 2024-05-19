@@ -6,7 +6,7 @@ import { SignupValidation } from '../utils/SignupValidation';
 import Logo from "../assets/trans-logo.png";
 
 const initialValues = {
-  name: '',
+  userName: '',
   email: '',
   password: '',
 };
@@ -36,17 +36,17 @@ const SignupForm = ({ bgImage, loginLink, className }) => {
             <Form className="flex flex-col gap-3">
               <div className="flex flex-col gap-1">
                 <div>
-                  <label htmlFor="name" className="block font-bold text-gray-500">
-                    Name :
+                  <label htmlFor="userName" className="block font-bold text-gray-500">
+                    UserName :
                   </label>
                   <Field
                     type="text"
-                    name="name"
+                    name="userName"
                     className="p-1 w-full bg-transparent border-2 border-gray-500 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300"
                   />
                 </div>
-                {touched.name && errors.name && (
-                  <small className="text-red-400">{errors.name}</small>
+                {touched.userName && errors.userName && (
+                  <small className="text-red-400">{errors.userName}</small>
                 )}
               </div>
               <div className="flex flex-col gap-1">

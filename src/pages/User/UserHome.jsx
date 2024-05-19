@@ -13,14 +13,19 @@ import Arijith from "../../assets/user/artists/arijith.png";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ArtistSection from "../../assets/user/artistSection.png";
+import CollectionCard from "../../components/CollectionCard";
+import Rain from "../../assets/user/collections/rain.jpeg";
+import Wedding from "../../assets/user/collections/wedding.png";
+import Travel from "../../assets/user/collections/travel.jpeg";
+import Party from "../../assets/user/collections/party.png";
+import Love from "../../assets/user/collections/love.png";
+import Peace from "../../assets/user/collections/peace.png";
 
 function UserHome() {
   return (
     <div>
       <Header />
-      <div
-        className="flex flex-col items-center justify-center xxs:pt-5 xs:pt-14 pb-40"
-      >
+      <div className="flex flex-col items-center justify-center xxs:pt-5 xs:pt-14 pb-40">
         <div
           style={{
             backgroundImage: `url(${Banner})`,
@@ -159,6 +164,19 @@ function UserHome() {
             Tune into Your Mood
           </h1>
         </div>
+        <div className="w-full flex flex-col items-start xxs:px-2 xs:px-3 sm:px-10 md:px-5 xl:px-10 py-10 mt-12">
+        <h1 className="text-gray-300 font-bold text-2xl border-b-2 pb-1">
+            Trending Collections
+          </h1>
+          <div className="grid xxs:px-16 xxs:grid-cols-1 xxs:gap-8 xs:px-0 xs:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 lg:gap-7 xl:grid-cols-6 xl:gap-12 mt-7">
+            <CollectionCard Img={Rain} title="Monsoon Mix" />
+            <CollectionCard Img={Wedding} title="Tie the Knot Tunes" />
+            <CollectionCard Img={Travel} title="Voyage Vibes" />
+            <CollectionCard Img={Party} title="Party Pulse" />
+            <CollectionCard Img={Love} title="Whispers of Love" />
+            <CollectionCard Img={Peace} title="Calm Currents" />
+          </div>
+        </div>
         <div
           className="mt-40 h-[500px] rounded-md flex flex-col items-start justify-center px-10"
           style={{
@@ -181,7 +199,9 @@ function UserHome() {
             than ever to grow your fanbase. Join MeloVibe now and let your music
             be heard around the world!"
           </h1>
-          <Button classname="xxs:mt-5 xs:mt-10 py-3 px-6 bg-gradient-to-r from-pink-500 to-blue-900">Join As Artist</Button>
+          <Button classname="xxs:mt-5 xs:mt-10 py-3 px-6 bg-gradient-to-r from-pink-500 to-blue-900">
+            Join As Artist
+          </Button>
         </div>
       </div>
       <Footer />
