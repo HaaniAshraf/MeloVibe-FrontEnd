@@ -2,11 +2,11 @@ import { React, useState } from "react";
 import Logo from "../assets/trans-logo.png";
 import { IoSearch } from "react-icons/io5";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { HiHome } from "react-icons/hi";
-import { IoMdInformationCircleOutline } from "react-icons/io";
-import { FaRegHeart } from "react-icons/fa6";
-import { BiSolidPlaylist } from "react-icons/bi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
+import QueueMusicOutlinedIcon from '@mui/icons-material/QueueMusicOutlined';
 
 function Header() {
   const location = useLocation();
@@ -34,38 +34,38 @@ function Header() {
         <IoSearch className="cursor-pointer absolute inset-y-0 right-2 sm:right-1 md:right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text- hover:text-pink-500" />
       </div>
       <ul className="md:flex hidden items-center gap-10 text-2xl pr-5">
-        <Link to={"/"}>
+        <Link to={"/"} title="Home">
           <li
             className={location.pathname === "/" ? "active-link" : "nav-item"}
           >
-            <HiHome/>
+            <HomeRoundedIcon/>
           </li>
         </Link>
-        <Link to={"/about"}>
+        <Link to={"/about"} title="About Us">
           <li
             className={
               location.pathname === "/about" ? "active-link" : "nav-item"
             }
           >
-            <IoMdInformationCircleOutline/>
+            <InfoOutlinedIcon/>
           </li>
         </Link>
-        <Link to={"/liked"}>
+        <Link to={"/liked"} title="Liked">
           <li
             className={
               location.pathname === "/liked" ? "active-link" : "nav-item"
             }
           >
-            <FaRegHeart/>
+            <FavoriteBorderRoundedIcon/>
           </li>
         </Link>
-        <Link to={"/playlists"}>
+        <Link to={"/playlists"} title="Playlists">
           <li
             className={
               location.pathname === "/playlists" ? "active-link" : "nav-item"
             }
           >
-            <BiSolidPlaylist/>
+            <QueueMusicOutlinedIcon/>
           </li>
         </Link>
       </ul>

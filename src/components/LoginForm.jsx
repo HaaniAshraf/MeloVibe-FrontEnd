@@ -72,12 +72,14 @@ function LoginForm({ bgImage, signupLink, className }) {
                   <small className="text-red-400">{errors.password}</small>
                 )}
               </div>
+              <Link to={'/'}>
               <Button
                 type="submit"
-                classname="mt-2 py-3 px-6 bg-gradient-to-r from-pink-500 to-blue-900"
+                classname="w-full mt-2 py-3 px-6 bg-gradient-to-r from-pink-500 to-blue-900"
               >
                 Login
               </Button>
+              </Link>
             </Form>
           )}
         </Formik>
