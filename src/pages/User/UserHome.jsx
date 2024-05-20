@@ -1,5 +1,4 @@
 import React from "react";
-import homeBg from "../../assets/homeBg.png";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Banner from "../../assets/user/banner.png";
@@ -10,8 +9,6 @@ import MusicCard from "../../components/MusicCard";
 import Sajni from "../../assets/user/musics/Sajni.jpg";
 import ArtistCard from "../../components/ArtistCard";
 import Arijith from "../../assets/user/artists/arijith.png";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ArtistSection from "../../assets/user/artistSection.png";
 import CollectionCard from "../../components/CollectionCard";
 import Rain from "../../assets/user/collections/rain.jpeg";
@@ -20,7 +17,12 @@ import Travel from "../../assets/user/collections/travel.jpeg";
 import Party from "../../assets/user/collections/party.png";
 import Love from "../../assets/user/collections/love.png";
 import Peace from "../../assets/user/collections/peace.png";
-
+import Friends from "../../assets/user/collections/friends.jpg";
+import Services from "../../components/Services";
+import { MdOutlineCloudDownload } from "react-icons/md";
+import { MdOutlineImportantDevices } from "react-icons/md";
+import { MdOutlineLiveTv } from "react-icons/md";
+import { PiMusicNotesFill } from "react-icons/pi";
 function UserHome() {
   return (
     <div>
@@ -52,58 +54,58 @@ function UserHome() {
             </Link>
           </div>
         </div>
-        <div className="w-full flex flex-col items-start xxs:px-2 xs:px-5 sm:px-10 md:px-8 lg:pl-5 xl:px-10 py-14">
+        <div className="w-full flex flex-col items-start xxs:px-2 xs:px-10 sm:px-10 md:px-8 lg:pl-5 xl:px-10 py-14">
           <h1 className="text-gray-300 font-bold text-2xl border-b-2 pb-1">
             Latest Hits
           </h1>
-          <div className="mt-5 grid xxs:grid-cols-1 xxs:gap-5 md:grid-cols-2 md:gap-10 lg:grid-cols-3 lg:gap-5 xl:grid-cols-4 xl:gap-x-14">
+          <div className="mt-5 w-full justify-between grid xxs:grid-cols-1 xxs:gap-5 sm:pr-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-7">
             <MusicCard
               Img={Sajni}
               song="Sajni"
               movie="Laapataa Ladies"
-              artists="Ram Sampath,Arijith Singh"
+              artists="Arijith Singh,Ram Sampath"
             />
             <MusicCard
               Img={Sajni}
               song="Sajni"
               movie="Laapataa Ladies"
-              artists="Ram Sampath,Arijith Singh"
+              artists="Arijith Singh,Ram Sampath"
             />
             <MusicCard
               Img={Sajni}
               song="Sajni"
               movie="Laapataa Ladies"
-              artists="Ram Sampath,Arijith Singh"
+              artists="Arijith Singh,Ram Sampath"
             />
             <MusicCard
               Img={Sajni}
               song="Sajni"
               movie="Laapataa Ladies"
-              artists="Ram Sampath,Arijith Singh"
+              artists="Arijith Singh,Ram Sampath"
             />
             <MusicCard
               Img={Sajni}
               song="Sajni"
               movie="Laapataa Ladies"
-              artists="Ram Sampath,Arijith Singh"
+              artists="Arijith Singh,Ram Sampath"
             />
             <MusicCard
               Img={Sajni}
               song="Sajni"
               movie="Laapataa Ladies"
-              artists="Ram Sampath,Arijith Singh"
+              artists="Arijith Singh,Ram Sampath"
             />
             <MusicCard
               Img={Sajni}
               song="Sajni"
               movie="Laapataa Ladies"
-              artists="Ram Sampath,Arijith Singh"
+              artists="Arijith Singh,Ram Sampath"
             />
             <MusicCard
               Img={Sajni}
               song="Sajni"
               movie="Laapataa Ladies"
-              artists="Ram Sampath,Arijith Singh"
+              artists="Arijith Singh,Ram Sampath"
             />
           </div>
         </div>
@@ -111,15 +113,8 @@ function UserHome() {
           <h1 className="text-gray-300 font-bold text-2xl border-b-2 pb-1">
             Popular Artists
           </h1>
-          <div className="flex xxs:px-10 sm:px-0 gap-6 mt-7 items-center">
-            <button className="xxs:h-7 xxs:w-7 p-2 md:h-10 md:w-10 border-2 border-blue-600 hover:border-pink-500 bg-gray-950 duration-200 text-blue-600 hover:text-pink-500 font-extrabold rounded-full flex items-center justify-center">
-              <ArrowBackIcon />
-            </button>
-            <div className="grid xxs:grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 xxs:gap-4 sm:gap-8 lg:gap-10">
-              <ArtistCard
-                Img={Arijith}
-                gradient="linear-gradient(to top, #c471f5 0%, #fa71cd 100%)"
-              />
+          <div className="flex xxs:px-10 sm:px-0 gap-6 mt-7 items-center w-full">
+            <div className="grid xxs:grid-cols-2 xxs:gap-12 sm:gap-7 sm:grid-cols-2 md:grid-cols-3 md:gap-5 lg:grid-cols-6 w-full justify-between">
               <ArtistCard
                 Img={Arijith}
                 gradient="linear-gradient(135deg, rgb(255, 168, 168) 10%, rgb(252, 255, 0) 100%)"
@@ -145,9 +140,6 @@ function UserHome() {
                 gradient="linear-gradient(109.6deg, rgb(27, 27, 79) 11.2%, rgb(120, 201, 244) 100.2%)"
               />
             </div>
-            <button className="xxs:h-7 xxs:w-7 p-2 md:h-10 md:w-10 border-2 border-blue-600 hover:border-pink-500 bg-gray-950 duration-200 text-blue-600 hover:text-pink-500 font-extrabold rounded-full flex items-center justify-center">
-              <ArrowForwardIcon />
-            </button>
           </div>
         </div>
         <div
@@ -165,20 +157,21 @@ function UserHome() {
           </h1>
         </div>
         <div className="w-full flex flex-col items-start xxs:px-2 xs:px-3 sm:px-10 md:px-5 xl:px-10 py-10 mt-12">
-        <h1 className="text-gray-300 font-bold text-2xl border-b-2 pb-1">
+          <h1 className="text-gray-300 font-bold text-2xl border-b-2 pb-1">
             Trending Collections
           </h1>
-          <div className="grid xxs:px-16 xxs:grid-cols-1 xxs:gap-8 xs:px-0 xs:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 lg:gap-7 xl:grid-cols-6 xl:gap-12 mt-7">
+          <div className="grid xxs:px-16 xxs:grid-cols-1 xxs:gap-8 xs:px-0 xs:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 lg:gap-7 xl:grid-cols-7 xl:gap-12 mt-7">
             <CollectionCard Img={Rain} title="Monsoon Mix" />
             <CollectionCard Img={Wedding} title="Tie the Knot Tunes" />
             <CollectionCard Img={Travel} title="Voyage Vibes" />
             <CollectionCard Img={Party} title="Party Pulse" />
-            <CollectionCard Img={Love} title="Whispers of Love" />
             <CollectionCard Img={Peace} title="Calm Currents" />
+            <CollectionCard Img={Love} title="Whispers of Love" />
+            <CollectionCard Img={Friends} title="Buddy Beats" />
           </div>
         </div>
         <div
-          className="mt-40 h-[500px] rounded-md flex flex-col items-start justify-center px-10"
+          className="mt-24 h-[500px] rounded-md flex flex-col items-start justify-center px-10"
           style={{
             backgroundImage: `url(${ArtistSection})`,
             backgroundSize: "cover",
@@ -202,6 +195,28 @@ function UserHome() {
           <Button classname="xxs:mt-5 xs:mt-10 py-3 px-6 bg-gradient-to-r from-pink-500 to-blue-900">
             Join As Artist
           </Button>
+        </div>
+        <div className="px-1 grid grid-cols-2 gap-x-2 gap-y-5 xs:gap-y-7 md:grid-cols-4 lg:gap-10 items-center justify-center mt-28 xl:gap-20">
+          <Services
+            className={"text-pink-500"}
+            icon={<MdOutlineCloudDownload />}
+            text={"Download & Listen"}
+          />
+          <Services
+            className={"text-blue-500"}
+            icon={<MdOutlineImportantDevices />}
+            text={"Multi-Device Sync"}
+          />
+          <Services
+            className={"text-pink-500"}
+            icon={<MdOutlineLiveTv />}
+            text={"Live streaming"}
+          />
+          <Services
+            className={"text-blue-500"}
+            icon={<PiMusicNotesFill />}
+            text={"Personalized Playlists"}
+          />
         </div>
       </div>
       <Footer />

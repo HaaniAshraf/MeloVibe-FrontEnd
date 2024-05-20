@@ -1,6 +1,6 @@
 import React from "react";
 
-function CollectionCard({Img,title}) {
+function CollectionCard({ Img, title }) {
   return (
     <div
       style={{
@@ -9,7 +9,7 @@ function CollectionCard({Img,title}) {
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}
-      className="h-40 w-40 p-2 rounded-md flex items-center justify-center text-gray-400 font-bold font-collageFont text-3xl text-center opacity-90 hover:opacity-100 cursor-pointer"
+      className="h-40 w-40 p-2 rounded-md flex items-center justify-center text-gray-300 font-bold font-collageFont text-3xl text-center opacity-90 hover:opacity-100 cursor-pointer"
     >
       {title}
     </div>

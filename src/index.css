@@ -38,13 +38,10 @@ body{
     animation: gradient-animation 5s ease infinite;
   }
   
-  .no-scrollbar::-webkit-scrollbar {
-    display: none; 
-  }
-  
-  .no-scrollbar {
-    -ms-overflow-style: none;  
-    scrollbar-width: none;  
+  .gradient {
+    background: linear-gradient(to right, #ec4899, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
 @keyframes gradient-animation {

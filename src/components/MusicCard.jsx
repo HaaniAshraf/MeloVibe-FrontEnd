@@ -5,15 +5,17 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
 function MusicCard({ Img, song, movie, artists }) {
   return (
-    <div className="flex gap-3 border-2 border-gray-800 rounded-md p-2 bg-gray-900 hover:shadow-customShadow duration-200">
-        <img src={Img} alt="" className="h-24" />
-      <div>
-        <h1 className="text-white font-semibold text-lg">
-          {song}
-          <span className="text-gray-500 text-sm"> - {movie}</span>
-        </h1>
-        <h1 className="text-gray-400 text-sm">{artists}</h1>
-        <div className="flex justify-between items-center mt-4">
+    <div className="flex gap-3 border-2 h-[120px] border-gray-900 rounded-md p-2 bg-gray-950 hover:shadow-customShadow duration-200">
+      <img src={Img} alt="" className="h-auto" />
+      <div className="flex flex-col justify-between">
+        <div className="flex flex-col">
+          <h1 className="text-white font-semibold text-lg">
+            {song}
+            <span className="text-gray-500 text-sm"> - {movie}</span>
+          </h1>
+          <h1 className="text-gray-400 text-xs">{artists}</h1>
+        </div>
+        <div className="flex justify-between items-center">
           <div className="flex gap-1">
             <FavoriteBorderRoundedIcon
               fontSize="medium"

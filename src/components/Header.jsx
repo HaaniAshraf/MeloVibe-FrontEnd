@@ -3,10 +3,10 @@ import Logo from "../assets/trans-logo.png";
 import { IoSearch } from "react-icons/io5";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
-import QueueMusicOutlinedIcon from '@mui/icons-material/QueueMusicOutlined';
+import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
+import QueueMusicOutlinedIcon from "@mui/icons-material/QueueMusicOutlined";
 
 function Header() {
   const location = useLocation();
@@ -18,13 +18,15 @@ function Header() {
   };
 
   return (
-    <div className="z-50 fixed w-full px-1 xs:px-2 py-3 flex justify-between items-center bg-gray-950 bg-opacity-75">
-      <div className="flex items-center justify-center">
-        <img src={Logo} alt="" className="xxs:h-10 sm:h-12 lg:h-16" />
-        <h1 className="xxs:text-2xl sm:text-3xl lg:text-4xl font-semibold font-signature gradient-bg">
-          MeloVibe
-        </h1>
-      </div>
+    <div className="z-50 fixed w-full px-1 xs:px-2 py-3 flex justify-between items-center bg-gray-950 bg-opacity-90">
+      <Link to={"/"}>
+        <div className="flex items-center justify-center">
+          <img src={Logo} alt="" className="xxs:h-10 sm:h-12 lg:h-16" />
+          <h1 className="xxs:text-2xl sm:text-3xl lg:text-4xl font-semibold font-signature gradient-bg">
+            MeloVibe
+          </h1>
+        </div>
+      </Link>
       <div className="w-1/2 xxs:w-1/3 xs:w-1/2 md:w-1/3 relative h-9">
         <input
           type="text"
@@ -38,7 +40,7 @@ function Header() {
           <li
             className={location.pathname === "/" ? "active-link" : "nav-item"}
           >
-            <HomeRoundedIcon/>
+            <HomeRoundedIcon />
           </li>
         </Link>
         <Link to={"/about"} title="About Us">
@@ -47,7 +49,7 @@ function Header() {
               location.pathname === "/about" ? "active-link" : "nav-item"
             }
           >
-            <InfoOutlinedIcon/>
+            <InfoOutlinedIcon />
           </li>
         </Link>
         <Link to={"/liked"} title="Liked">
@@ -56,7 +58,7 @@ function Header() {
               location.pathname === "/liked" ? "active-link" : "nav-item"
             }
           >
-            <FavoriteBorderRoundedIcon/>
+            <FavoriteBorderRoundedIcon />
           </li>
         </Link>
         <Link to={"/playlists"} title="Playlists">
@@ -65,7 +67,7 @@ function Header() {
               location.pathname === "/playlists" ? "active-link" : "nav-item"
             }
           >
-            <QueueMusicOutlinedIcon/>
+            <QueueMusicOutlinedIcon />
           </li>
         </Link>
       </ul>
@@ -77,7 +79,7 @@ function Header() {
           {nav ? <FaTimes /> : <FaBars />}
         </button>
         {nav && (
-            <ul className="flex flex-col items-center justify-center text-gray-300 bg-gray-900 bg-opacity-90 absolute top-16 left-0 w-full py-4">
+          <ul className="flex flex-col items-center justify-center text-gray-300 bg-gray-900 bg-opacity-90 absolute top-16 left-0 w-full py-4">
             <li className="my-2">
               <Link
                 to={"/"}

@@ -3,9 +3,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UserLogin from "./pages/User/UserLogin";
 import UserSignup from './pages/User/UserSignup'
 import UserHome from "./pages/User/UserHome";
-import About from "./pages/User/UserHome";
-import Liked from "./pages/User/UserHome";
-import Playlists from "./pages/User/UserHome";
+import About from "./pages/User/About";
+import Liked from "./pages/User/Liked";
+import Playlists from "./pages/User/Playlists";
 import AdminLogin from './pages/admin/AdminLogin'
 import AdminSignup from './pages/admin/AdminSignup'
 
