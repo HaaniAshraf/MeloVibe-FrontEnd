@@ -58,7 +58,7 @@ function UserHome() {
           <h1 className="text-gray-300 font-bold text-2xl border-b-2 pb-1">
             Latest Hits
           </h1>
-          <div className="mt-5 w-full justify-between grid xxs:grid-cols-1 xxs:gap-5 sm:pr-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-7">
+          <div className="mt-5 w-full justify-between grid xxs:grid-cols-1 xxs:gap-5 sm:pr-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-9">
             <MusicCard
               Img={Sajni}
               song="Sajni"
@@ -192,9 +192,11 @@ function UserHome() {
             than ever to grow your fanbase. Join MeloVibe now and let your music
             be heard around the world!"
           </h1>
+          <Link to={'/artist/login'}>
           <Button classname="xxs:mt-5 xs:mt-10 py-3 px-6 bg-gradient-to-r from-pink-500 to-blue-900">
             Join As Artist
           </Button>
+          </Link>
         </div>
         <div className="px-1 grid grid-cols-2 gap-x-2 gap-y-5 xs:gap-y-7 md:grid-cols-4 lg:gap-10 items-center justify-center mt-28 xl:gap-20">
           <Services

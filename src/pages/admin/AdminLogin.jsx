@@ -6,7 +6,7 @@ function AdminLogin() {
   return (
     <LoginForm
       bgImage={adminLoginBg}
-      signupLink="/adminSignup"
+      signupLink="/admin/signup"
       className="flex items-start"
     />
   );

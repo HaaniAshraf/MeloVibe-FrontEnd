@@ -14,7 +14,12 @@
     .nav-item {
         @apply cursor-pointer text-gray-200 hover:text-pink-500 duration-150 md:text-2xl flex flex-col items-center justify-center;
     }
+    .file-input {
+      @apply relative block w-full py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-gray-700 cursor-pointer;
+    }
 }
+
+
 
 body{
   background-image: url('./assets/user/homeBg.png');
@@ -42,6 +47,18 @@ body{
     background: linear-gradient(to right, #ec4899, #3b82f6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  input[type="file"]::file-selector-button {
+    border: 2px solid #282734;
+    border-radius: 0.2em;
+    background-color: #100f15;
+    color: white;
+  }
+  
+  input[type="file"]::file-selector-button:hover {
+    background-color: #121616;
+    cursor: pointer;
   }
 
 @keyframes gradient-animation {

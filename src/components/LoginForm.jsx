@@ -2,8 +2,10 @@ import React from "react";
 import { Formik, Form, Field } from "formik";
 import { Link } from "react-router-dom";
 import Button from "./Button";
-import { LoginValidation } from "../utils/LoginValidation";
+import { LoginValidation } from "../utils/FieldValidation";
 import Logo from "../assets/trans-logo.png";
+import { HiOutlineMail } from "react-icons/hi";
+import { GoLock } from "react-icons/go";
 
 const initialValues = {
   email: "",
@@ -44,11 +46,14 @@ function LoginForm({ bgImage, signupLink, className }) {
                   >
                     Email
                   </label>
+                  <div className="flex items-center bg-transparent border-2 border-gray-500 rounded">
+                  <HiOutlineMail className="text-gray-500 mx-1"/>
                   <Field
                     type="email"
                     name="email"
-                    className="p-1 w-full bg-transparent border-2 border-gray-500 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300"
+                    className="bg-transparent w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300 border-l-2 border-gray-500"
                   />
+                  </div>
                 </div>
                 {touched.email && errors.email && (
                   <small className="text-red-400">{errors.email}</small>
@@ -62,11 +67,14 @@ function LoginForm({ bgImage, signupLink, className }) {
                   >
                     Password
                   </label>
+                  <div className="flex items-center bg-transparent border-2 border-gray-500 rounded">
+                  <GoLock className="text-gray-500 mx-1"/>
                   <Field
                     type="password"
                     name="password"
-                    className="p-1 w-full bg-transparent border-2 border-gray-500 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300"
+                    className="bg-transparent w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300 border-l-2 border-gray-500"
                   />
+                  </div>
                 </div>
                 {touched.password && errors.password && (
                   <small className="text-red-400">{errors.password}</small>

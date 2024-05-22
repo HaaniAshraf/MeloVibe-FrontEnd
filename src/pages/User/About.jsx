@@ -1,8 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Header from "../../components/Header";
+import MemberCard from "../../components/MemberCard";
+import Shimmer from "../../components/Shimmer";
 import Footer from "../../components/Footer";
 
 function About() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const usernames = ["HaaniAshraf", "yadukrishnan0", "favas17"];
+      const membersData = [];
+      for (const username of usernames) {
+        try {
+          const response = await axios.get(
+            `https://api.github.com/users/${username}`
+          );
+          membersData.push(response.data);
+        } catch (error) {
+          console.error(`Error fetching data for ${username}:`, error);
+        }
+      }
+      setData(membersData);
+      setLoading(false);
+    };
+    fetchData();
+  }, []);
+
+  const roles = {
+    HaaniAshraf: "Founder & CEO",
+    yadukrishnan0: "Chief Technology Officer",
+    favas17: "Head of Marketing",
+  };
+
   return (
     <div>
       <Header />
@@ -52,25 +84,21 @@ function About() {
             </ul>
           </div>
           <div>
-          <h2 className="text-3xl font-semibold mb-6">Meet the Team</h2>
-          <div className="flex flex-wrap justify-center gap-10">
-            <div className="bg-gray-950 opacity-95 rounded-lg shadow-lg p-6 text-center">
-              <img src={''} alt="Team Member 1" className="w-24 h-24 rounded-full mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-2">Haani Ashraf</h3>
-              <p className="text-gray-600">Founder & CEO</p>
-            </div>
-            <div className="bg-gray-950 opacity-95 rounded-lg shadow-lg p-6 text-center">
-              <img src={''} alt="Team Member 2" className="w-24 h-24 rounded-full mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-2">Yadu Krishnan</h3>
-              <p className="text-gray-600">Chief Technology Officer</p>
-            </div>
-            <div className="bg-gray-950 opacity-95 rounded-lg shadow-lg p-6 text-center">
-              <img src={''} alt="Team Member 3" className="w-24 h-24 rounded-full mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-2">Favas</h3>
-              <p className="text-gray-600">Head of Marketing</p>
+            <h2 className="text-3xl font-semibold mb-6">Meet the Team</h2>
+            <div className="flex flex-wrap justify-center gap-10">
+              {loading
+                ? Array(3)
+                    .fill()
+                    .map((_, index) => <Shimmer key={index} />)
+                : data.map((member, index) => (
+                    <MemberCard
+                      key={index}
+                      member={member}
+                      role={roles[member.login]}
+                    />
+                  ))}
             </div>
           </div>
-        </div>
         </div>
       </div>
       <Footer />
