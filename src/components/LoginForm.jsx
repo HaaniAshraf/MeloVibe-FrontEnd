@@ -12,7 +12,7 @@ const initialValues = {
   password: "",
 };
 
-function LoginForm({ bgImage, signupLink, className }) {
+function LoginForm({ bgImage, signupLink, className, handleSubmit, error }) {
   return (
     <div
       className={`flex flex-col text-white xxs:px-7 xs:px-12 sm:px-16 lg:px-28 xl:px-64 justify-center ${className}`}
@@ -35,24 +35,20 @@ function LoginForm({ bgImage, signupLink, className }) {
         <Formik
           initialValues={initialValues}
           validationSchema={LoginValidation}
+          onSubmit={handleSubmit}
         >
           {({ errors, touched }) => (
-            <Form className="flex flex-col gap-4">
+            <Form className="flex flex-col gap-5 mt-5">
               <div className="flex flex-col gap-1">
                 <div>
-                  <label
-                    htmlFor="email"
-                    className="block font-bold mb-2 text-gray-500"
-                  >
-                    Email
-                  </label>
-                  <div className="flex items-center bg-transparent border-2 border-gray-500 rounded">
-                  <HiOutlineMail className="text-gray-500 mx-1"/>
-                  <Field
-                    type="email"
-                    name="email"
-                    className="bg-transparent w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300 border-l-2 border-gray-500"
-                  />
+                  <div className="flex items-center bg-transparent border-2 border-gray-300 rounded">
+                    <HiOutlineMail className="text-gray-300 mx-1 text-lg" />
+                    <Field
+                      placeholder="Email"
+                      type="email"
+                      name="email"
+                      className="p-1 bg-transparent w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300 border-l-2 border-gray-300 placeholder:text-gray-500"
+                    />
                   </div>
                 </div>
                 {touched.email && errors.email && (
@@ -61,37 +57,35 @@ function LoginForm({ bgImage, signupLink, className }) {
               </div>
               <div className="flex flex-col gap-1">
                 <div>
-                  <label
-                    htmlFor="password"
-                    className="block font-bold mb-2 text-gray-500"
-                  >
-                    Password
-                  </label>
-                  <div className="flex items-center bg-transparent border-2 border-gray-500 rounded">
-                  <GoLock className="text-gray-500 mx-1"/>
-                  <Field
-                    type="password"
-                    name="password"
-                    className="bg-transparent w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300 border-l-2 border-gray-500"
-                  />
+                  <div className="flex items-center bg-transparent border-2 border-gray-300 rounded">
+                    <GoLock className="text-gray-300 mx-1 text-lg" />
+                    <Field
+                      placeholder="Password"
+                      type="password"
+                      name="password"
+                      className="p-1 bg-transparent w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300 border-l-2 border-gray-300 placeholder:text-gray-500"
+                    />
                   </div>
                 </div>
                 {touched.password && errors.password && (
                   <small className="text-red-400">{errors.password}</small>
                 )}
               </div>
-              <Link to={'/'}>
+              {error && (
+                <div className="text-red-400 text-sm mb-2">{error}</div>
+              )}
               <Button
                 type="submit"
                 classname="w-full mt-2 py-3 px-6 bg-gradient-to-r from-pink-500 to-blue-900"
               >
                 Login
               </Button>
-              </Link>
             </Form>
           )}
         </Formik>
-        <h4 className="text-center mt-4 text-gray-500 hover:text-gray-400">Forgot Password ?</h4>
+        <h4 className="text-center mt-4 text-gray-500 hover:text-gray-400">
+          Forgot Password ?
+        </h4>
         <div className="text-center mt-4 text-gray-400 xxs:text-sm xs:text-base">
           New to MeloVibe ?
           <Link to={signupLink}>

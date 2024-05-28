@@ -6,7 +6,7 @@ function AdminSignup() {
   return (
     <SignupForm
       bgImage={adminSignupBg}
-      loginLink="/artist/login"
+      loginLink="/admin/login"
       className="flex justify-end"
     />
   );

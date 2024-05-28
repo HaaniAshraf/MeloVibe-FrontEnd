@@ -1,9 +1,10 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import Logo from "../assets/trans-logo.png";
 import { IoSearch } from "react-icons/io5";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
 import QueueMusicOutlinedIcon from "@mui/icons-material/QueueMusicOutlined";
@@ -11,7 +12,6 @@ import QueueMusicOutlinedIcon from "@mui/icons-material/QueueMusicOutlined";
 function Header() {
   const location = useLocation();
   const [nav, setNav] = useState(false);
-  const navigate = useNavigate();
 
   const closeNav = () => {
     setNav(false);
@@ -33,7 +33,7 @@ function Header() {
           className="w-full sm:w-full sm:ml pl-2 h-full rounded-md text-white bg-gray-700 bg-opacity-50 placeholder-gray-400 placeholder-pl-2 placeholder-ml-2"
           placeholder="Search..."
         />
-        <IoSearch className="cursor-pointer absolute inset-y-0 right-2 sm:right-1 md:right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text- hover:text-pink-500" />
+        <IoSearch className="cursor-pointer absolute inset-y-0 right-2 sm:right-1 md:right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-pink-500" />
       </div>
       <ul className="md:flex hidden items-center gap-10 text-2xl pr-5">
         <Link to={"/"} title="Home">
@@ -41,6 +41,15 @@ function Header() {
             className={location.pathname === "/" ? "active-link" : "nav-item"}
           >
             <HomeRoundedIcon />
+          </li>
+        </Link>
+        <Link to={"/profile"} title="Profile">
+          <li
+            className={
+              location.pathname === "/profile" ? "active-link" : "nav-item"
+            }
+          >
+            <AccountCircleOutlinedIcon />
           </li>
         </Link>
         <Link to={"/about"} title="About Us">
@@ -78,46 +87,57 @@ function Header() {
         >
           {nav ? <FaTimes /> : <FaBars />}
         </button>
-        {nav && (
-          <ul className="flex flex-col items-center justify-center text-gray-300 bg-gray-900 bg-opacity-90 absolute top-16 left-0 w-full py-4">
-            <li className="my-2">
-              <Link
-                to={"/"}
-                onClick={closeNav}
-                className=" hover:text-pink-500 font-semibold text-xl"
-              >
-                Home
-              </Link>
-            </li>
-            <li className="my-2">
-              <Link
-                to={"/about"}
-                onClick={closeNav}
-                className=" hover:text-pink-500 font-semibold text-xl"
-              >
-                Profile
-              </Link>
-            </li>
-            <li className="my-2">
-              <Link
-                to={"/liked"}
-                onClick={closeNav}
-                className=" hover:text-pink-500 font-semibold text-xl"
-              >
-                Liked
-              </Link>
-            </li>
-            <li className="my-2">
-              <Link
-                to={"/playlists"}
-                onClick={closeNav}
-                className=" hover:text-pink-500 font-semibold text-xl"
-              >
-                Playlists
-              </Link>
-            </li>
-          </ul>
-        )}
+        <ul
+          className={`flex flex-col items-center justify-center text-gray-300 bg-gray-950 bg-opacity-95 absolute top-16 left-0 w-full py-4 transform origin-top transition-transform duration-300 ease-out ${
+            nav ? "scale-y-100" : "scale-y-0"
+          }`}
+        >
+          <li className="my-2">
+            <Link
+              to={"/"}
+              onClick={closeNav}
+              className=" hover:text-pink-500 font-semibold text-xl"
+            >
+              Home
+            </Link>
+          </li>
+          <li className="my-2">
+            <Link
+              to={"/profile"}
+              onClick={closeNav}
+              className=" hover:text-pink-500 font-semibold text-xl"
+            >
+              Profile
+            </Link>
+          </li>
+          <li className="my-2">
+            <Link
+              to={"/about"}
+              onClick={closeNav}
+              className=" hover:text-pink-500 font-semibold text-xl"
+            >
+              About
+            </Link>
+          </li>
+          <li className="my-2">
+            <Link
+              to={"/liked"}
+              onClick={closeNav}
+              className=" hover:text-pink-500 font-semibold text-xl"
+            >
+              Liked
+            </Link>
+          </li>
+          <li className="my-2">
+            <Link
+              to={"/playlists"}
+              onClick={closeNav}
+              className=" hover:text-pink-500 font-semibold text-xl"
+            >
+              Playlists
+            </Link>
+          </li>
+        </ul>
       </div>
     </div>
   );

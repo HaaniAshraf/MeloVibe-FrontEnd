@@ -10,9 +10,10 @@ import { GoLock } from "react-icons/go";
 
 const initialValues = {
   userName: "",
+  name: "",
   email: "",
   password: "",
-  profilePicture: null
+  profileImg: null,
 };
 
 const SignupForm = ({
@@ -20,8 +21,8 @@ const SignupForm = ({
   loginLink,
   className,
   handleSubmit,
-  profilePicInput = false,
   type,
+  error,
 }) => {
   return (
     <div
@@ -45,71 +46,61 @@ const SignupForm = ({
         <Formik
           initialValues={initialValues}
           validationSchema={
-            type == "artist" ? ArtistValidation : SignupValidation
+            type === "artist" ? ArtistValidation : SignupValidation
           }
           onSubmit={handleSubmit}
         >
-          {({ errors, touched }) => (
-            <Form className="flex flex-col gap-3">
-              {profilePicInput && (
+          {({ errors, touched, setFieldValue }) => (
+            <Form className="flex flex-col gap-5 mt-3">
+              {type === "artist" && (
                 <div className="flex flex-col gap-1">
-                  <div>
-                    <label
-                      htmlFor="profilePicture"
-                      className="block font-bold text-gray-500"
-                    >
-                      Profile Picture :
-                    </label>
-                    <Field
-                      type="file"
-                      name="profilePicture"
-                      accept="image/*"
-                      className="p-1 w-full bg-transparent border-2 border-gray-500 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300"
-                    />
-                  </div>
-                  {touched.profilePicture && errors.profilePicture && (
-                    <small className="text-red-400">
-                      {errors.profilePicture}
-                    </small>
+                  <label htmlFor="profileImg" className="text-gray-400">
+                    Profile Image:
+                  </label>
+                  <input
+                    id="profileImg"
+                    name="profileImg"
+                    type="file"
+                    accept="image/*"
+                    className="p-1 w-full bg-transparent border-2 border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300"
+                    onChange={(event) => {
+                      setFieldValue("profileImg", event.currentTarget.files[0]);
+                    }}
+                  />
+                  {touched.profileImg && errors.profileImg && (
+                    <small className="text-red-400">{errors.profileImg}</small>
                   )}
                 </div>
               )}
               <div className="flex flex-col gap-1">
                 <div>
-                  <label
-                    htmlFor="userName"
-                    className="block font-bold text-gray-500"
-                  >
-                    UserName :
-                  </label>
-                  <div className="flex items-center bg-transparent border-2 border-gray-500 rounded">
-                  <AiOutlineUser className="text-gray-500 mx-1"/>
-                  <Field
-                    type="userName"
-                    name="userName"
-                    className="bg-transparent w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300 border-l-2 border-gray-500"
-                  />
+                  <div className="flex items-center bg-transparent border-2 border-gray-300 rounded">
+                    <AiOutlineUser className="text-gray-300 mx-1 text-lg" />
+                    <Field
+                      type="text"
+                      placeholder={type === "artist" ? "Name" : "Username"}
+                      name={type === "artist" ? "name" : "userName"}
+                      className="p-1 bg-transparent w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300 border-l-2 border-gray-300 placeholder:text-gray-500"
+                    />
                   </div>
                 </div>
-                {touched.userName && errors.userName && (
-                  <small className="text-red-400">{errors.userName}</small>
-                )}
+                {touched[type === "artist" ? "name" : "userName"] &&
+                  errors[type === "artist" ? "name" : "userName"] && (
+                    <small className="text-red-400">
+                      {errors[type === "artist" ? "name" : "userName"]}
+                    </small>
+                  )}
               </div>
               <div className="flex flex-col gap-1">
                 <div>
-                  <label
-                    htmlFor="email"
-                    className="block font-bold text-gray-500"
-                  >
-                    Email :
-                  </label>
-                  <div className="flex items-center bg-transparent border-2 border-gray-500 rounded">
-                  <HiOutlineMail className="text-gray-500 mx-1"/>
-                  <Field
-                    type="email"
-                    name="email"
-                    className="bg-transparent w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300 border-l-2 border-gray-500"
-                  />
+                  <div className="flex items-center bg-transparent border-2 border-gray-300 rounded">
+                    <HiOutlineMail className="text-gray-300 mx-1 text-lg" />
+                    <Field
+                      placeholder="Email"
+                      type="email"
+                      name="email"
+                      className="p-1 bg-transparent w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300 border-l-2 border-gray-300 placeholder:text-gray-500"
+                    />
                   </div>
                 </div>
                 {touched.email && errors.email && (
@@ -118,25 +109,23 @@ const SignupForm = ({
               </div>
               <div className="flex flex-col gap-1">
                 <div>
-                  <label
-                    htmlFor="password"
-                    className="block font-bold text-gray-500"
-                  >
-                    Password :
-                  </label>
-                  <div className="flex items-center bg-transparent border-2 border-gray-500 rounded">
-                  <GoLock className="text-gray-500 mx-1"/>
-                  <Field
-                    type="password"
-                    name="password"
-                    className="bg-transparent w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300 border-l-2 border-gray-500"
-                  />
+                  <div className="flex items-center bg-transparent border-2 border-gray-300 rounded">
+                    <GoLock className="text-gray-300 mx-1 text-lg" />
+                    <Field
+                      placeholder="Password"
+                      type="password"
+                      name="password"
+                      className="p-1 bg-transparent w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300 border-l-2 border-gray-300 placeholder:text-gray-500"
+                    />
                   </div>
                 </div>
                 {touched.password && errors.password && (
                   <small className="text-red-400">{errors.password}</small>
                 )}
               </div>
+              {error && (
+                <div className="text-red-400 text-sm mb-2">{error}</div>
+              )}
               <Button
                 type="submit"
                 classname="mt-4 py-3 px-6 bg-gradient-to-r from-pink-500 to-blue-900"
@@ -147,7 +136,7 @@ const SignupForm = ({
           )}
         </Formik>
         <div className="text-center mt-5 text-gray-400">
-          Already Signed Up ?
+          Already Signed Up?
           <Link to={loginLink}>
             <span className="font-bold text-blue-800 hover:text-pink-500 duration-150 cursor-pointer ml-1">
               Login

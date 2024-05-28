@@ -25,7 +25,7 @@ body{
   background-image: url('./assets/user/homeBg.png');
   background-position: center;
   background-size: cover;
-  background-repeat: repeat;
+  background-repeat: no-repeat;
 }
 
 .gradient-bg {
@@ -47,6 +47,15 @@ body{
     background: linear-gradient(to right, #ec4899, #3b82f6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  #otp-form{
+    border: 2px solid transparent;
+    border-radius: 0.5rem; 
+    padding: 1.75rem; 
+    background: linear-gradient(#1c1c1c, #000) padding-box, 
+                linear-gradient(to right, rgb(147, 15, 118),rgb(57, 57, 248)) border-box;
+    text-align: center;
   }
 
   input[type="file"]::file-selector-button {
