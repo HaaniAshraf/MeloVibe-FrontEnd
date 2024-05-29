@@ -3,11 +3,12 @@ import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../instance/axiosInstance";
 
-function OTPForm() {
+function OTPForm({ type }) {
   const [inputs, setInputs] = useState(["", "", "", ""]);
-  const [error, setError] = useState("");
   const [resendDisabled, setResendDisabled] = useState(true);
   const [timer, setTimer] = useState(30);
+  const [error, setError] = useState("");
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -57,12 +58,12 @@ function OTPForm() {
     e.preventDefault();
     const otp = inputs.join("");
     try {
-      const response = await axiosInstance.post("/otp", {
+      const response = await axiosInstance.post(`/${type}/otp`, {
         otp,
         action: "verify",
       });
       if (response.data.success) {
-        navigate("/login");
+        navigate(`/${type}/login`);
       } else {
         setError(response.data.error);
       }
@@ -76,12 +77,9 @@ function OTPForm() {
     }
   };
 
-  const handleResendOTP = async (e) => {
-    e.preventDefault();
+  const handleResendOTP = async () => {
     try {
-      await axiosInstance.post("/otp", { action: "resend" });
-      setResendDisabled(true);
-      setTimer(30);
+      await axiosInstance.post(`/${type}/otp`, { action: "resend" });
     } catch (error) {
       console.error("There was an error resending the OTP!", error);
     }

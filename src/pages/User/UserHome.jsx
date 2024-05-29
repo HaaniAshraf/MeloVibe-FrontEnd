@@ -47,7 +47,7 @@ function UserHome() {
                 Where Every Beat Matches Your Mood. "
               </span>
             </h1>
-            <Link to={"/login"}>
+            <Link to={"/user/login"}>
               <Button classname="mt-8 py-3 px-6 bg-gradient-to-r from-pink-500 to-blue-900">
                 Get Started
               </Button>

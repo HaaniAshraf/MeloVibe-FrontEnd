@@ -2,11 +2,16 @@ import React from "react";
 import { Formik, Form, Field } from "formik";
 import { Link } from "react-router-dom";
 import Button from "./Button";
-import { SignupValidation, ArtistValidation } from "../utils/FieldValidation";
+import {
+  SignupValidation,
+  ArtistValidation,
+  AdminValidation,
+} from "../utils/FieldValidation";
 import Logo from "../assets/trans-logo.png";
 import { AiOutlineUser } from "react-icons/ai";
 import { HiOutlineMail } from "react-icons/hi";
 import { GoLock } from "react-icons/go";
+import { IoKeyOutline } from "react-icons/io5";
 
 const initialValues = {
   userName: "",
@@ -14,6 +19,7 @@ const initialValues = {
   email: "",
   password: "",
   profileImg: null,
+  secretKey: "",
 };
 
 const SignupForm = ({
@@ -24,6 +30,17 @@ const SignupForm = ({
   type,
   error,
 }) => {
+  const getValidationSchema = () => {
+    switch (type) {
+      case "user":
+        return SignupValidation;
+      case "artist":
+        return ArtistValidation;
+      case "admin":
+        return AdminValidation;
+    }
+  };
+  const validationSchema = getValidationSchema();
   return (
     <div
       className={`flex text-white xxs:px-7 xs:px-12 sm:px-20 lg:px-28 xl:px-64 xxs:py-2 xxs:gap-7 md:gap-10 lg:gap-12 xl:gap-14 items-center ${className}`}
@@ -45,9 +62,7 @@ const SignupForm = ({
         </div>
         <Formik
           initialValues={initialValues}
-          validationSchema={
-            type === "artist" ? ArtistValidation : SignupValidation
-          }
+          validationSchema={validationSchema}
           onSubmit={handleSubmit}
         >
           {({ errors, touched, setFieldValue }) => (
@@ -123,6 +138,24 @@ const SignupForm = ({
                   <small className="text-red-400">{errors.password}</small>
                 )}
               </div>
+              {type === "admin" && (
+                <div className="flex flex-col gap-1">
+                  <div>
+                    <div className="flex items-center bg-transparent border-2 border-gray-300 rounded">
+                      <IoKeyOutline className="text-gray-300 mx-1 text-lg" />
+                      <Field
+                        placeholder="Secret Key"
+                        type="password"
+                        name="secretKey"
+                        className="p-1 bg-transparent w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300 border-l-2 border-gray-300 placeholder:text-gray-500"
+                      />
+                    </div>
+                  </div>
+                  {touched.secretKey && errors.secretKey && (
+                    <small className="text-red-400">{errors.secretKey}</small>
+                  )}
+                </div>
+              )}
               {error && (
                 <div className="text-red-400 text-sm mb-2">{error}</div>
               )}

@@ -10,7 +10,7 @@ function UserSignup({ type }) {
   const handleSubmit = async (data) => {
     try {
       const response = await axiosInstance.post("/signup", data);
-      navigate("/otp");
+      navigate("/user/otp");
     } catch (error) {
       console.error("There was an error!", error);
       if (error.response && error.response.data && error.response.data.error) {
@@ -23,7 +23,7 @@ function UserSignup({ type }) {
   return (
     <SignupForm
       bgImage={userSignupBg}
-      loginLink="/login"
+      loginLink="/user/login"
       className="flex justify-center"
       handleSubmit={handleSubmit}
       type={type}

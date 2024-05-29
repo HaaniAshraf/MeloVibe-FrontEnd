@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import SignupForm from "../../components/SignupForm";
 import ArtistSignupBg from "../../assets/artist/artistSignup.png";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import axiosInstance from "../../instance/axiosInstance";
 
 function ArtistSignup() {
@@ -15,7 +14,6 @@ function ArtistSignup() {
     formData.append("name", data.name);
     formData.append("email", data.email);
     formData.append("password", data.password);
-
     try {
       const response = await axiosInstance.post(
         "/artist/signup",
@@ -26,7 +24,7 @@ function ArtistSignup() {
           },
         }
       );
-      navigate("/artist/login");
+      navigate("/artist/otp");
     } catch (error) {
       console.error("There was an error!", error);
       if (error.response && error.response.data && error.response.data.error) {

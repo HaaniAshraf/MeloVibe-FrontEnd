@@ -19,8 +19,8 @@ function UserLogin() {
         setError(error.response.data.error);
         if (error.response.data.redirect) {
           setTimeout(() => {
-            navigate("/otp");
-          }, 3000);
+            navigate("/user/otp");
+          }, 1000);
         }
       } else {
         setError("An unexpected error occurred.");
@@ -30,7 +30,7 @@ function UserLogin() {
   return (
     <LoginForm
       bgImage={userLoginBg}
-      signupLink="/signup"
+      signupLink="/user/signup"
       className="flex items-center"
       handleSubmit={handleSubmit}
       error={error}
