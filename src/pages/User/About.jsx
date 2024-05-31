@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Header from "../../components/Header";
 import MemberCard from "../../components/MemberCard";
 import Shimmer from "../../components/Shimmer";
-import Footer from "../../components/Footer";
 
 function About() {
   const [data, setData] = useState([]);
@@ -37,7 +35,6 @@ function About() {
 
   return (
     <div>
-      <Header />
       <div className="text-gray-200 py-24">
         <div className="text-center gradient">
           <h1 className="text-4xl font-bold">About Us</h1>
@@ -101,7 +98,6 @@ function About() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

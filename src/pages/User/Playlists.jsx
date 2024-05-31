@@ -1,6 +1,5 @@
 import React from "react";
 import homeBg from "../../assets/homeBg.png";
-import Header from "../../components/Header";
 
 function Playlists() {
   return (
@@ -14,7 +13,6 @@ function Playlists() {
         height: "100vh",
       }}
     >
-      <Header/>
     </div>
   );
 }

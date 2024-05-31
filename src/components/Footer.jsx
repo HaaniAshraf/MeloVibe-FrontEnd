@@ -13,9 +13,9 @@ function Footer() {
             <h2 className="text-xl font-bold text-gray-400">MeloVibe</h2>
           </div>
           <div className="flex xxs:gap-3 sm:gap-8 mb-4">
-            <Link to="/contact" className="hover:text-pink-500">Contact</Link>
-            <Link to="/terms" className="hover:text-pink-500">Terms of Service</Link>
-            <Link to="/privacy" className="hover:text-pink-500">Privacy Policy</Link>
+            <Link to="" className="hover:text-pink-500">Contact</Link>
+            <Link to="" className="hover:text-pink-500">Terms of Service</Link>
+            <Link to="" className="hover:text-pink-500">Privacy Policy</Link>
           </div>
           <div className="flex space-x-4">
             <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-pink-500">

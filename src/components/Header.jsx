@@ -43,37 +43,37 @@ function Header() {
             <HomeRoundedIcon />
           </li>
         </Link>
-        <Link to={"/profile"} title="Profile">
+        <Link to={"/user/profile"} title="Profile">
           <li
             className={
-              location.pathname === "/profile" ? "active-link" : "nav-item"
+              location.pathname === "/user/profile" ? "active-link" : "nav-item"
             }
           >
             <AccountCircleOutlinedIcon />
           </li>
         </Link>
-        <Link to={"/about"} title="About Us">
+        <Link to={"/user/about"} title="About Us">
           <li
             className={
-              location.pathname === "/about" ? "active-link" : "nav-item"
+              location.pathname === "/user/about" ? "active-link" : "nav-item"
             }
           >
             <InfoOutlinedIcon />
           </li>
         </Link>
-        <Link to={"/liked"} title="Liked">
+        <Link to={"/user/liked"} title="Liked">
           <li
             className={
-              location.pathname === "/liked" ? "active-link" : "nav-item"
+              location.pathname === "/user/liked" ? "active-link" : "nav-item"
             }
           >
             <FavoriteBorderRoundedIcon />
           </li>
         </Link>
-        <Link to={"/playlists"} title="Playlists">
+        <Link to={"/user/playlists"} title="Playlists">
           <li
             className={
-              location.pathname === "/playlists" ? "active-link" : "nav-item"
+              location.pathname === "/user/playlists" ? "active-link" : "nav-item"
             }
           >
             <QueueMusicOutlinedIcon />
@@ -103,7 +103,7 @@ function Header() {
           </li>
           <li className="my-2">
             <Link
-              to={"/profile"}
+              to={"/user/profile"}
               onClick={closeNav}
               className=" hover:text-pink-500 font-semibold text-xl"
             >
@@ -112,7 +112,7 @@ function Header() {
           </li>
           <li className="my-2">
             <Link
-              to={"/about"}
+              to={"/user/about"}
               onClick={closeNav}
               className=" hover:text-pink-500 font-semibold text-xl"
             >
@@ -121,7 +121,7 @@ function Header() {
           </li>
           <li className="my-2">
             <Link
-              to={"/liked"}
+              to={"/user/liked"}
               onClick={closeNav}
               className=" hover:text-pink-500 font-semibold text-xl"
             >
@@ -130,7 +130,7 @@ function Header() {
           </li>
           <li className="my-2">
             <Link
-              to={"/playlists"}
+              to={"/user/playlists"}
               onClick={closeNav}
               className=" hover:text-pink-500 font-semibold text-xl"
             >

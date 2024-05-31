@@ -11,8 +11,8 @@ function ArtistLogin() {
     try {
       const response = await axiosInstance.post("/artist/login", data);
       if (response.data.success) {
-        const email = response.data.data;
-        navigate(`/artist/artistHome/${email}`);
+        const id = response.data.data;
+        navigate(`/artist/artistHome/${id}`);
       }
     } catch (error) {
       console.error("There was an error!", error);

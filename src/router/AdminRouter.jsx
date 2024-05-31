@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import AdminLogin from "../pages/admin/AdminLogin";
 import AdminSignup from "../pages/admin/AdminSignup";
 import AdminOtp from '../pages/admin/AdminOtp'
+import AdminHome from "../pages/admin/AdminHome";
 
 function AdminRouter() {
   return (
@@ -10,6 +11,7 @@ function AdminRouter() {
       <Route path="/login" element={<AdminLogin />} />
       <Route path="/signup" element={<AdminSignup />} />
       <Route path="/otp" element={<AdminOtp />} />
+      <Route path="/home" element={<AdminHome />} />
     </Routes>
   );
 }

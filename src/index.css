@@ -57,6 +57,13 @@ body{
                 linear-gradient(to right, rgb(147, 15, 118),rgb(57, 57, 248)) border-box;
     text-align: center;
   }
+  #profileCard{
+    border: 2px solid transparent;
+    border-radius: 0.5rem; 
+    background: linear-gradient(#1c1c1c, #000) padding-box, 
+                linear-gradient(to right, rgb(147, 15, 118),rgb(57, 57, 248)) border-box;
+    text-align: center;
+  }
 
   input[type="file"]::file-selector-button {
     border: 2px solid #282734;
