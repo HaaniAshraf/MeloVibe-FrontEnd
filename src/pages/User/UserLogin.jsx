@@ -34,6 +34,7 @@ function UserLogin() {
       className="flex items-center"
       handleSubmit={handleSubmit}
       error={error}
+      forgotLink="/user/inputEmail"
     />
   );
 }

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Button from "./Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import axiosInstance from "../instance/axiosInstance";
 
 function OTPForm({ type }) {
+  const { state } = useLocation();
+  const context = state?.context || "";
   const [inputs, setInputs] = useState(["", "", "", ""]);
   const [resendDisabled, setResendDisabled] = useState(true);
   const [timer, setTimer] = useState(30);
@@ -63,7 +65,11 @@ function OTPForm({ type }) {
         action: "verify",
       });
       if (response.data.success) {
-        navigate(`/${type}/login`);
+        if (context === "forgotPassword") {
+          navigate(`/${type}/newPassword`);
+        } else {
+          navigate(`/${type}/login`);
+        }
       } else {
         setError(response.data.error);
       }

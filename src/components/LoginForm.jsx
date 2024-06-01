@@ -12,7 +12,14 @@ const initialValues = {
   password: "",
 };
 
-function LoginForm({ bgImage, signupLink, className, handleSubmit, error }) {
+function LoginForm({
+  bgImage,
+  signupLink,
+  className,
+  handleSubmit,
+  error,
+  forgotLink,
+}) {
   return (
     <div
       className={`flex flex-col text-white xxs:px-7 xs:px-12 sm:px-16 lg:px-28 xl:px-64 justify-center ${className}`}
@@ -83,9 +90,11 @@ function LoginForm({ bgImage, signupLink, className, handleSubmit, error }) {
             </Form>
           )}
         </Formik>
-        <h4 className="text-center mt-4 text-gray-500 hover:text-gray-400">
-          Forgot Password ?
-        </h4>
+        <Link to={forgotLink}>
+          <h4 className="text-center mt-4 text-gray-500 hover:text-gray-400 cursor-pointer">
+            Forgot Password ?
+          </h4>
+        </Link>
         <div className="text-center mt-4 text-gray-400 xxs:text-sm xs:text-base">
           New to MeloVibe ?
           <Link to={signupLink}>

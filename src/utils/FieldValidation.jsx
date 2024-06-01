@@ -28,7 +28,7 @@ export const ArtistValidation = Yup.object().shape({
 });
 
 // User signup validation schema
-export const SignupValidation = Yup.object({
+export const SignupValidation = Yup.object().shape({
   userName: Yup.string()
     .max(15, "Username cannot exceed 15 characters")
     .matches(
@@ -71,9 +71,28 @@ export const AdminValidation = Yup.object().shape({
 });
 
 // Login validation schema
-export const LoginValidation = Yup.object({
+export const LoginValidation = Yup.object().shape({
   email: Yup.string()
     .email("Please enter valid email")
     .required("Please enter email"),
   password: Yup.string().required("Please enter password"),
+});
+
+// Forgot Password Validation
+export const ForgotPassValidation = Yup.object().shape({
+  email: Yup.string().email("Invalid email").required("Email is required"),
+});
+
+// New Password Validation
+export const NewPasswordValidation = Yup.object().shape({
+  password: Yup.string()
+    .min(8, "Password must be at least 8 characters long")
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+      "Please input a stronger password"
+    )
+    .required("Please enter password"),
+  cpassword: Yup.string()
+    .oneOf([Yup.ref("password"), null], "Passwords must match")
+    .required("Please confirm password"),
 });

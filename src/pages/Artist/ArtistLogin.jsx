@@ -35,6 +35,7 @@ function ArtistLogin() {
       className="flex items-end"
       handleSubmit={handleSubmit}
       error={error}
+      forgotLink="/artist/inputEmail"
     />
   );
 }
