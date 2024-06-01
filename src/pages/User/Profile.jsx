@@ -1,5 +1,4 @@
 import React from "react";
-import ProfileCard from '../../components/ProfileCard'
 
 function Profile() {
   return (
@@ -7,7 +6,7 @@ function Profile() {
       <div className="text-center gradient">
         <h1 className="text-4xl font-bold">Profile</h1>
       </div>
-      <ProfileCard/>
+      
     </div>
   );
 }

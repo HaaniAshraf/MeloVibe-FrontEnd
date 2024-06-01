@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import LoginForm from "../../components/LoginForm";
 import userLoginBg from "../../assets/user/login-bg.jpg";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../instance/axiosInstance";
+import { AuthContext } from "../../context/AuthContext";
 
 function UserLogin() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
   const handleSubmit = async (data) => {
     try {
       const response = await axiosInstance.post("/login", data);
       if (response.data.success) {
+        login(response.data.accessToken);
         navigate("/");
       }
     } catch (error) {
