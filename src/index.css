@@ -60,7 +60,7 @@ body{
   #profileCard{
     border: 2px solid transparent;
     border-radius: 0.5rem; 
-    background: linear-gradient(#1c1c1c, #000) padding-box, 
+    background: linear-gradient(#1c1c1c, #000000) padding-box, 
                 linear-gradient(to right, rgb(147, 15, 118),rgb(57, 57, 248)) border-box;
     text-align: center;
   }
@@ -76,6 +76,14 @@ body{
     background-color: #121616;
     cursor: pointer;
   }
+
+  @layer base {
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+}
 
 @keyframes gradient-animation {
     0% {

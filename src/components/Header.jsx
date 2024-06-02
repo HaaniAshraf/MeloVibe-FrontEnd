@@ -9,7 +9,7 @@ import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
 import QueueMusicOutlinedIcon from "@mui/icons-material/QueueMusicOutlined";
 
-function Header() {
+function Header({ userId }) {
   const location = useLocation();
   const [nav, setNav] = useState(false);
 
@@ -43,7 +43,7 @@ function Header() {
             <HomeRoundedIcon />
           </li>
         </Link>
-        <Link to={"/user/profile"} title="Profile">
+        <Link to={`/user/profile/${userId}`} title="Profile">
           <li
             className={
               location.pathname === "/user/profile" ? "active-link" : "nav-item"
@@ -103,7 +103,7 @@ function Header() {
           </li>
           <li className="my-2">
             <Link
-              to={"/user/profile"}
+              to={`/user/profile/${userId}`}
               onClick={closeNav}
               className=" hover:text-pink-500 font-semibold text-xl"
             >

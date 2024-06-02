@@ -10,7 +10,6 @@ import Profile from "../pages/User/Profile";
 import Liked from "../pages/User/Liked";
 import Playlists from "../pages/User/Playlists";
 import UserLayout from "../layout/UserLayout";
-import ProtectedRoute from "../utils/ProtectedRoute";
 
 function UserRouter() {
   return (
@@ -22,11 +21,9 @@ function UserRouter() {
       <Route path="/newPassword" element={<NewPassUser />} />
       <Route element={<UserLayout />}>
         <Route path="/about" element={<About />} />
-        <Route element={<ProtectedRoute />}>
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/:id" element={<Profile />} />
           <Route path="/liked" element={<Liked />} />
           <Route path="/playlists" element={<Playlists />} />
-        </Route>
       </Route>
     </Routes>
   );

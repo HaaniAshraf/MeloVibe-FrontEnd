@@ -1,23 +1,25 @@
 import React from "react";
 import Button from "./Button";
 
-function ProfileCard({ artist }) {
+function ProfileCard({ type }) {
   return (
     <div
       className="flex flex-col items-center mt-5 rounded-md px-5 py-7 sm:px-7 sm:py-8 md:px-10 lg:py-10"
       id="profileCard"
     >
-      <img
-        src={`http://localhost:3000/uploads/${artist.profileImg}`}
-        alt="Profile"
-        className="h-20 w-20 md:h-28 md:w-28 rounded-full"
-      />
+      {type && type.profileImg && (
+        <img
+          src={`http://localhost:3000/uploads/${type.profileImg}`}
+          alt="Profile"
+          className="h-20 w-20 md:h-28 md:w-28 rounded-full"
+        />
+      )}
       <div className="mt-4 md:mt-6 flex flex-col gap-4 md:gap-5">
         <div className="flex justify-between items-center">
           <label htmlFor="">Name : </label>
           <input
             type="text"
-            placeholder={artist.name}
+            placeholder={type.name}
             className="p-1 bg-gray-800 opacity-80 rounded-sm"
           />
         </div>
@@ -25,8 +27,8 @@ function ProfileCard({ artist }) {
           <label htmlFor="">Email : </label>
           <input
             type="text"
-            value={artist.email}
-            placeholder={artist.email}
+            value={type.email}
+            placeholder={type.email}
             disabled
             className="p-1 bg-gray-800 opacity-80 rounded-sm"
           />

@@ -24,7 +24,7 @@ function Sidebar({ artistId }) {
         </button>
       </div>
       <div
-        className={`fixed inset-y-0 left-0 w-64 bg-gray-950 text-white transition-all duration-300 lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 w-64 bg-gray-950 z-10 text-white transition-all duration-300 lg:translate-x-0 ${
           isOpen ? "" : "-translate-x-full"
         }`}
       >

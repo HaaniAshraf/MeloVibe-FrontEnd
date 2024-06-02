@@ -5,11 +5,9 @@ import AdminRouter from "./router/AdminRouter";
 import ArtistRouter from "./router/ArtistRouter";
 import UserHome from "./pages/User/UserHome";
 import Scroll from "./components/Scroll";
-import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   return (
-    <AuthProvider>
       <BrowserRouter>
         <Scroll />
         <Routes>
@@ -19,7 +17,6 @@ function App() {
           <Route path="/" element={<UserHome />} />
         </Routes>
       </BrowserRouter>
-    </AuthProvider>
   );
 }
 
