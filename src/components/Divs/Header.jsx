@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from "../assets/trans-logo.png";
+import Logo from "../../assets/trans-logo.png";
 import { IoSearch } from "react-icons/io5";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
@@ -9,7 +9,7 @@ import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
 import QueueMusicOutlinedIcon from "@mui/icons-material/QueueMusicOutlined";
 
-function Header({ userId }) {
+function Header() {
   const location = useLocation();
   const [nav, setNav] = useState(false);
 
@@ -43,7 +43,7 @@ function Header({ userId }) {
             <HomeRoundedIcon />
           </li>
         </Link>
-        <Link to={`/user/profile/${userId}`} title="Profile">
+        <Link to={`/user/profile/`} title="Profile">
           <li
             className={
               location.pathname === "/user/profile" ? "active-link" : "nav-item"
@@ -103,7 +103,7 @@ function Header({ userId }) {
           </li>
           <li className="my-2">
             <Link
-              to={`/user/profile/${userId}`}
+              to={`/user/profile/`}
               onClick={closeNav}
               className=" hover:text-pink-500 font-semibold text-xl"
             >

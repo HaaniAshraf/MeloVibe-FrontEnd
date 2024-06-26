@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import LoginForm from "../../components/LoginForm";
+import LoginForm from "../../components/Forms/LoginForm";
 import ArtistLoginBg from "../../assets/artist/artistLogin.png";
 import axiosInstance from "../../instance/axiosInstance";
 import { useNavigate } from "react-router-dom";

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import MemberCard from "../../components/MemberCard";
+import MemberCard from "../../components/Cards/MemberCard";
 import Shimmer from "../../components/Shimmer";
 
 function About() {

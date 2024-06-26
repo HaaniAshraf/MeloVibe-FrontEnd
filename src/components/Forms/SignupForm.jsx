@@ -1,13 +1,13 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import { Link } from "react-router-dom";
-import Button from "./Button";
+import Button from "../Buttons/Button";
 import {
   SignupValidation,
   ArtistValidation,
   AdminValidation,
-} from "../utils/FieldValidation";
-import Logo from "../assets/trans-logo.png";
+} from "../../utils/FieldValidation";
+import Logo from "../../assets/trans-logo.png";
 import { AiOutlineUser } from "react-icons/ai";
 import { HiOutlineMail } from "react-icons/hi";
 import { GoLock } from "react-icons/go";

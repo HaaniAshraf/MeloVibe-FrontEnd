@@ -1,5 +1,5 @@
 import React from "react";
-import OTPForm from "../../components/Otp";
+import OTPForm from "../../components/Forms/Otp";
 
 function ArtistOtp() {
   return <OTPForm type="artist" />;

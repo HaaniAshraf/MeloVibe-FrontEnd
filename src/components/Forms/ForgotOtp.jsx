@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Button from "./Button";
-import { useNavigate, useLocation } from "react-router-dom";
-import axiosInstance from "../instance/axiosInstance";
+import { useNavigate } from "react-router-dom";
+import axiosInstance from "../../instance/axiosInstance";
 
 function OTPForm({ type }) {
-  const { state } = useLocation();
-  const context = state?.context || "";
   const [inputs, setInputs] = useState(["", "", "", ""]);
   const [resendDisabled, setResendDisabled] = useState(true);
   const [timer, setTimer] = useState(30);
@@ -60,16 +58,12 @@ function OTPForm({ type }) {
     e.preventDefault();
     const otp = inputs.join("");
     try {
-      const response = await axiosInstance.post(`/${type}/otp`, {
+      const response = await axiosInstance.post(`/${type}/forgotOtp`, {
         otp,
         action: "verify",
       });
       if (response.data.success) {
-        if (context === "forgotPassword") {
-          navigate(`/${type}/newPassword`);
-        } else {
-          navigate(`/${type}/login`);
-        }
+        navigate(`/${type}/newPassword`);
       } else {
         setError(response.data.error);
       }
@@ -85,7 +79,7 @@ function OTPForm({ type }) {
 
   const handleResendOTP = async () => {
     try {
-      await axiosInstance.post(`/${type}/otp`, { action: "resend" });
+      await axiosInstance.post(`/${type}/forgotOtp`, { action: "resend" });
     } catch (error) {
       console.error("There was an error resending the OTP!", error);
     }

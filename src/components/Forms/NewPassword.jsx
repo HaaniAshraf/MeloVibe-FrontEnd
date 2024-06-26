@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
-import axiosInstance from "../instance/axiosInstance";
-import { HiOutlineMail } from "react-icons/hi";
-import Button from "./Button";
-import Logo from "../assets/trans-logo.png";
+import axiosInstance from "../../instance/axiosInstance";
+import { GoLock } from "react-icons/go";
+import Button from "../Buttons/Button";
+import Logo from "../../assets/trans-logo.png";
 import { useNavigate } from "react-router-dom";
-import { ForgotPassValidation } from "../utils/FieldValidation";
+import { NewPasswordValidation } from "../../utils/FieldValidation";
 
-const ForgotPassword = ({type}) => {
+function NewPassword({ type }) {
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const handleForgotPassword = async (values) => {
+  const handleSubmit = async (data) => {
     try {
-      const response = await axiosInstance.post(`/${type}/inputEmail`, values);
-      navigate(`/${type}/otp`, { state: { context: "forgotPassword" } });
+      const response = await axiosInstance.post(`/${type}/newPassword`, data);
+      navigate(`/${type}/login`);
     } catch (error) {
       console.error("There was an error!", error);
       if (error.response && error.response.data && error.response.data.error) {
@@ -23,7 +23,6 @@ const ForgotPassword = ({type}) => {
       }
     }
   };
-
   return (
     <div className="flex flex-col text-white justify-center items-center h-screen px-8">
       <div className="rounded-lg px-10 py-8 animate-fadeIn bg-[#05050599]">
@@ -34,27 +33,39 @@ const ForgotPassword = ({type}) => {
           </h1>
         </div>
         <h2 className="text-center mb-4 text-lg font-semibold text-gray-400">
-          Forgot Password
+          New Password
         </h2>
         <Formik
-          initialValues={{ email: "" }}
-          validationSchema={ForgotPassValidation}
-          onSubmit={handleForgotPassword}
+          initialValues={{ password: "", cpassword: "" }}
+          validationSchema={NewPasswordValidation}
+          onSubmit={handleSubmit}
         >
           {({ errors, touched }) => (
             <Form className="flex flex-col gap-5">
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-4">
                 <div className="flex items-center bg-transparent border-2 border-gray-300 rounded">
-                  <HiOutlineMail className="text-gray-300 mx-1 text-lg" />
+                  <GoLock className="text-gray-300 mx-1 text-lg" />
                   <Field
-                    placeholder="Email"
-                    type="email"
-                    name="email"
+                    placeholder="Password"
+                    type="password"
+                    name="password"
                     className="p-1 bg-transparent w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300 border-l-2 border-gray-300 placeholder:text-gray-500"
                   />
                 </div>
-                {touched.email && errors.email && (
-                  <small className="text-red-400">{errors.email}</small>
+                {touched.password && errors.password && (
+                  <small className="text-red-400">{errors.password}</small>
+                )}
+                <div className="flex items-center bg-transparent border-2 border-gray-300 rounded">
+                  <GoLock className="text-gray-300 mx-1 text-lg" />
+                  <Field
+                    placeholder="Confirm password"
+                    type="password"
+                    name="cpassword"
+                    className="p-1 bg-transparent w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300 border-l-2 border-gray-300 placeholder:text-gray-500"
+                  />
+                </div>
+                {touched.cpassword && errors.cpassword && (
+                  <small className="text-red-400">{errors.cpassword}</small>
                 )}
               </div>
               {error && (
@@ -64,7 +75,7 @@ const ForgotPassword = ({type}) => {
                 type="submit"
                 classname="w-full mt-2 py-3 px-6 bg-gradient-to-r from-pink-500 to-blue-900"
               >
-                Send OTP
+                Submit
               </Button>
             </Form>
           )}
@@ -72,6 +83,6 @@ const ForgotPassword = ({type}) => {
       </div>
     </div>
   );
-};
+}
 
-export default ForgotPassword;
+export default NewPassword;

@@ -5,7 +5,7 @@ import { CgProfile } from "react-icons/cg";
 import { TiMessages } from "react-icons/ti";
 import { FaBars, FaRegBell } from "react-icons/fa";
 import { IoClose, IoMusicalNotes } from "react-icons/io5";
-import Logo from "../assets/trans-logo.png";
+import Logo from "../../assets/trans-logo.png";
 
 function Sidebar({ artistId }) {
   const [isOpen, setIsOpen] = useState(false);

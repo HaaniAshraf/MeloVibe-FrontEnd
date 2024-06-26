@@ -1,10 +1,10 @@
 import React from "react";
-import Button from "./Button";
+import Button from "../Buttons/Button";
 
 function ProfileCard({ type }) {
   return (
     <div
-      className="flex flex-col items-center mt-5 rounded-md px-5 py-7 sm:px-7 sm:py-8 md:px-10 lg:py-10"
+      className="flex flex-col items-center mt-6 rounded-md px-5 py-7 sm:px-7 sm:py-8 md:px-10 lg:py-10"
       id="profileCard"
     >
       {type && type.profileImg && (

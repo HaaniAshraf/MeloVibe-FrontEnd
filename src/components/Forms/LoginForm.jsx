@@ -1,9 +1,9 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import { Link } from "react-router-dom";
-import Button from "./Button";
-import { LoginValidation } from "../utils/FieldValidation";
-import Logo from "../assets/trans-logo.png";
+import Button from "../Buttons/Button";
+import { LoginValidation } from "../../utils/FieldValidation";
+import Logo from "../../assets/trans-logo.png";
 import { HiOutlineMail } from "react-icons/hi";
 import { GoLock } from "react-icons/go";
 

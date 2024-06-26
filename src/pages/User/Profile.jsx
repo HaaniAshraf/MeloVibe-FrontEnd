@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axiosInstance from "../../instance/axiosInstance";
-import ProfileCard from "../../components/ProfileCard";
+import ProfileCard from "../../components/Cards/ProfileCard";
 
 function ArtistProfile() {
   const params = useParams();

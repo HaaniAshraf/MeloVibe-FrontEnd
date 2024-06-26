@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../components/Divs/Sidebar";
 import { Outlet, useParams } from "react-router-dom";
 
 function ArtistLayout() {

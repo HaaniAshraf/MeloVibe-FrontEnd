@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SignupForm from "../../components/SignupForm";
+import SignupForm from "../../components/Forms/SignupForm";
 import userSignupBg from "../../assets/user/signup-bg.jpg";
 import axiosInstance from "../../instance/axiosInstance";
 import { useNavigate } from "react-router-dom";
