@@ -17,8 +17,8 @@ function UserRouter() {
       <Route path="/login" element={<UserLogin />} />
       <Route path="/signup" element={<UserSignup type={"user"} />} />
       <Route path="/otp" element={<UserOtp />} />
-      <Route path="/inputEmail" element={<ForgotPassUser />} />
-      <Route path="/newPassword" element={<NewPassUser />} />
+      <Route path="/input-email" element={<ForgotPassUser />} />
+      <Route path="/new-password" element={<NewPassUser />} />
       <Route element={<UserLayout />}>
         <Route path="/about" element={<About />} />
           <Route path="/profile/:id" element={<Profile />} />

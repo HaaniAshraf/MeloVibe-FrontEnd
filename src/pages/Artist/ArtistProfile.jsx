@@ -1,30 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import axiosInstance from "../../instance/axiosInstance";
 import ProfileCard from "../../components/Cards/ProfileCard";
+import { useArtist } from "../../context/ArtistContext";
 
 function ArtistProfile() {
-  const params = useParams();
-  const { id } = params;
+  const { artistId } = useArtist();
   const [artist, setArtist] = useState({});
   const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchArtistData = async () => {
       try {
-        const response = await axiosInstance.get(`/artist/artistProfile/${id}`);
+        const response = await axiosInstance.get(`/artist/artistProfile/${artistId}`);
         setArtist(response.data.data);
       } catch (error) {
         console.error("Error fetching artist data:", error);
         setError("Failed to fetch artist data.");
       }
     };
-    if (id) {
+    if (artistId) {
       fetchArtistData();
     } else {
       console.log("ID not available");
     }
-  }, [id]);
+  }, [artistId]);
 
   return (
     <div

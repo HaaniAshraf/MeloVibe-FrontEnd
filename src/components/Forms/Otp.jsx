@@ -66,7 +66,7 @@ function OTPForm({ type }) {
       });
       if (response.data.success) {
         if (context === "forgotPassword") {
-          navigate(`/${type}/newPassword`);
+          navigate(`/${type}/new-password`);
         } else {
           navigate(`/${type}/login`);
         }

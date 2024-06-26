@@ -1,16 +1,66 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { MdDashboard, MdLogout } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { TiMessages } from "react-icons/ti";
 import { FaBars, FaRegBell } from "react-icons/fa";
 import { IoClose, IoMusicalNotes } from "react-icons/io5";
 import Logo from "../../assets/trans-logo.png";
+import Swal from "sweetalert2";
+import { useArtist } from "../../context/ArtistContext";
 
-function Sidebar({ artistId }) {
+function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
+  const sidebarRef = useRef(null);
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
+  };
+  const navigate = useNavigate();
+  const { logout } = useArtist();
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target) &&
+        isOpen
+      ) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
+
+  const handleLogout = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You will be logged out",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Logout",
+      cancelButtonText: "Cancel",
+      backdrop: "rgba(0,0,0,0.7)",
+      customClass: {
+        container: "custom-swal-container",
+        popup: "custom-swal-popup",
+        title: "custom-swal-title",
+        text: "custom-swal-text",
+        confirmButton: "custom-swal-confirm-button",
+        cancelButton: "custom-swal-cancel-button",
+        backdrop: "rgba(0,0,0,0.7)",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem("jwtToken");
+        logout();
+        navigate("/artist/login");
+      }
+    });
   };
 
   return (
@@ -18,27 +68,30 @@ function Sidebar({ artistId }) {
       <div className="lg:hidden">
         <button
           onClick={toggleSidebar}
-          className="flex items-center text-2xl px-3 pt-5 text-gray-400 hover:text-white duration-150 focus:outline-none"
+          className="flex items-center text-2xl px-3 pt-5 text-gray-400 hover:text-white duration-150"
         >
           <FaBars />
         </button>
       </div>
       <div
+        ref={sidebarRef}
         className={`fixed inset-y-0 left-0 w-64 bg-gray-950 z-10 text-white transition-all duration-300 lg:translate-x-0 ${
           isOpen ? "" : "-translate-x-full"
         }`}
       >
         <div className="flex flex-col h-full">
           <div className="flex items-center justify-between px-4 py-6 border-b border-gray-700">
-            <div className="flex items-center justify-center">
-              <img src={Logo} alt="" className="xxs:h-10 sm:h-12 lg:h-16" />
-              <h1 className="xxs:text-2xl sm:text-3xl lg:text-4xl font-semibold font-signature gradient-bg">
-                MeloVibe
-              </h1>
-            </div>
+            <Link to={"/"}>
+              <div className="flex items-center justify-center">
+                <img src={Logo} alt="" className="xxs:h-10 sm:h-12 lg:h-16" />
+                <h1 className="xxs:text-2xl sm:text-3xl lg:text-4xl font-semibold font-signature gradient-bg">
+                  MeloVibe
+                </h1>
+              </div>
+            </Link>
             <button
               onClick={toggleSidebar}
-              className="lg:hidden text-gray-400 text-2xl hover:text-white duration-150 focus:outline-none"
+              className="lg:hidden text-gray-400 text-2xl hover:text-white duration-150"
             >
               <IoClose />
             </button>
@@ -48,7 +101,7 @@ function Sidebar({ artistId }) {
               <ul>
                 <li>
                   <NavLink
-                    to={`/artist/artistHome/${artistId}`}
+                    to="/artist/artist-home"
                     className="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-900 hover:text-pink-400 duration-150 rounded text-lg"
                     activeClassName="bg-gray-800"
                   >
@@ -58,7 +111,7 @@ function Sidebar({ artistId }) {
                 </li>
                 <li>
                   <NavLink
-                    to=""
+                    to="/artist/add-music"
                     className="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-900 hover:text-pink-400 duration-150 rounded text-lg"
                     activeClassName="bg-gray-800"
                   >
@@ -68,7 +121,7 @@ function Sidebar({ artistId }) {
                 </li>
                 <li>
                   <NavLink
-                    to={`/artist/artistProfile/${artistId}`}
+                    to="/artist/artist-profile"
                     className="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-900 hover:text-pink-400 duration-150 rounded text-lg"
                     activeClassName="bg-gray-800"
                   >
@@ -100,14 +153,13 @@ function Sidebar({ artistId }) {
             </nav>
           </div>
           <div className="px-4 py-6 border-t border-gray-700">
-            <NavLink
-              to=""
+            <button
+              onClick={handleLogout}
               className="flex items-center text-lg px-4 text-gray-300 hover:text-red-400 duration-150"
-              activeClassName="text-white"
             >
               <MdLogout className="w-5 h-5 mr-2" />
               Logout
-            </NavLink>
+            </button>
           </div>
         </div>
       </div>

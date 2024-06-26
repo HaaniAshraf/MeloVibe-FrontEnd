@@ -13,8 +13,8 @@ function AdminRouter() {
       <Route path="/login" element={<AdminLogin />} />
       <Route path="/signup" element={<AdminSignup />} />
       <Route path="/otp" element={<AdminOtp />} />
-      <Route path="/inputEmail" element={<ForgotPassAdmin />} />
-      <Route path="/newPassword" element={<NewPassAdmin />} />
+      <Route path="/input-email" element={<ForgotPassAdmin />} />
+      <Route path="/new-password" element={<NewPassAdmin />} />
       <Route path="/home" element={<AdminHome />} />
     </Routes>
   );

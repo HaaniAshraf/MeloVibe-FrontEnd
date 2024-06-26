@@ -1,13 +1,11 @@
 import React from "react";
 import Sidebar from "../components/Divs/Sidebar";
-import { Outlet, useParams } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 function ArtistLayout() {
-  const params = useParams();
-  const { id } = params;
   return (
     <div>
-      <Sidebar artistId={id}/>
+      <Sidebar/>
       <Outlet />
     </div>
   )

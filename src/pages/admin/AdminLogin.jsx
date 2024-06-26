@@ -34,7 +34,7 @@ function AdminLogin() {
       className="flex items-start"
       handleSubmit={handleSubmit}
       error={error}
-      forgotLink="/admin/inputEmail"
+      forgotLink="/admin/input-email"
     />
   );
 }

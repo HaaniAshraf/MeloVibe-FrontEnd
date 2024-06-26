@@ -63,7 +63,7 @@ function OTPForm({ type }) {
         action: "verify",
       });
       if (response.data.success) {
-        navigate(`/${type}/newPassword`);
+        navigate(`/${type}/new-password`);
       } else {
         setError(response.data.error);
       }

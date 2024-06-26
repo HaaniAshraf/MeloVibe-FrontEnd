@@ -1,24 +1,24 @@
 import { React, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import axiosInstance from "../../instance/axiosInstance";
+import { useArtist } from "../../context/ArtistContext";
 
 function ArtistHome() {
-  const params = useParams();
-  const { id } = params;
+  const { artistId } = useArtist();
   const [artist, setArtist] = useState([]);
 
   useEffect(() => {
     const fetchArtistData = async () => {
       try {
-        const response = await axiosInstance.get(`/artist/artistHome/${id}`);
+        const response = await axiosInstance.get(
+          `/artist/artistHome/${artistId}`
+        );
         setArtist(response.data.data);
       } catch (error) {
         console.error("Error fetching artist data:", error);
-        setError("Failed to fetch artist data.");
       }
     };
     fetchArtistData();
-  }, [id]);
+  }, [artistId]);
 
   return (
     <div className="text-white pt-6 h-screen flex flex-col items-center">
