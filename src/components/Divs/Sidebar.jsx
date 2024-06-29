@@ -4,7 +4,9 @@ import { MdDashboard, MdLogout } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { TiMessages } from "react-icons/ti";
 import { FaBars, FaRegBell } from "react-icons/fa";
-import { IoClose, IoMusicalNotes } from "react-icons/io5";
+import { IoClose } from "react-icons/io5";
+import { PiMusicNotesPlusFill } from "react-icons/pi";
+import { GiMusicalNotes } from "react-icons/gi";
 import Logo from "../../assets/trans-logo.png";
 import Swal from "sweetalert2";
 import { useArtist } from "../../context/ArtistContext";
@@ -115,7 +117,17 @@ function Sidebar() {
                     className="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-900 hover:text-pink-400 duration-150 rounded text-lg"
                     activeClassName="bg-gray-800"
                   >
-                    <IoMusicalNotes className="w-5 h-5 mr-2" />
+                    <GiMusicalNotes className="w-5 h-5 mr-2" />
+                    My Songs
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/artist/add-music"
+                    className="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-900 hover:text-pink-400 duration-150 rounded text-lg"
+                    activeClassName="bg-gray-800"
+                  >
+                    <PiMusicNotesPlusFill className="w-5 h-5 mr-2" />
                     Add Song
                   </NavLink>
                 </li>
