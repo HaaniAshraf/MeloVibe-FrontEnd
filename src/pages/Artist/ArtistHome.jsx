@@ -21,7 +21,7 @@ function ArtistHome() {
   }, [artistId]);
 
   return (
-    <div className="text-white pt-6 h-screen flex flex-col items-center">
+    <div className="text-white pt-6 h-screen flex flex-col items-center lg:w-[calc(100vw-15rem)] lg:ml-[15rem]">
       <h3 className="gradient-text font-bold flex gap-2 items-end font-collageFont">
         <span className="text-2xl">Welcome..</span>
         <span className="text-3xl">{artist.name}</span>

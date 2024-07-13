@@ -1,36 +1,54 @@
 import React from "react";
-import PlayCircleFilledWhiteIcon from "@mui/icons-material/PlayCircleFilledWhite";
+import { FaPlay, FaPause } from "react-icons/fa";
 import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
-function MusicCard({ Img, song, movie, artists }) {
+function MusicCard({ song, playingAudio, togglePlay }) {
   return (
-    <div className="flex gap-3 border-2 h-[120px] border-gray-900 rounded-md p-2 bg-gray-950 hover:shadow-customShadow duration-200">
-      <img src={Img} alt="" className="h-auto" />
-      <div className="flex flex-col justify-between">
+    <div className="flex gap-3 border border-gray-900 rounded-md p-2 bg-gray-950 hover:shadow-customShadow duration-200">
+      <img
+        src={`http://localhost:3000/uploads/${song.songImage}`}
+        alt={song.songName}
+        className="w-32 h-32 object-cover"
+      />
+      <div className="flex flex-col justify-between w-3/4">
         <div className="flex flex-col">
           <h1 className="text-white font-semibold text-lg">
-            {song}
-            <span className="text-gray-500 text-sm"> - {movie}</span>
+            {song.songName}
+            {song.album && (
+              <span className="text-sm sm:text-base text-gray-400 block sm:inline sm:ml-1">
+                - {song.album}
+              </span>
+            )}
           </h1>
-          <h1 className="text-gray-400 text-xs">{artists}</h1>
+          <h1 className="text-gray-400 text-sm">{song.artistName}</h1>
         </div>
-        <div className="flex justify-between items-center">
-          <div className="flex gap-1">
-            <FavoriteBorderRoundedIcon
-              fontSize="medium"
-              className="text-gray-400 hover:text-pink-500 duration-200"
-            />
-            <AddCircleOutlineIcon
-              fontSize="medium"
-              className="text-gray-400 hover:text-blue-500 duration-200"
-            />
+        <div className="flex justify-between items-center mt-1">
+          <div className="flex gap-2">
+            <FavoriteBorderRoundedIcon className="text-gray-400 hover:text-pink-500 duration-200" />
+            <AddCircleOutlineIcon className="text-gray-400 hover:text-blue-500 duration-200" />
           </div>
           <div>
-            <PlayCircleFilledWhiteIcon
-              className="text-pink-500 hover:text-blue-500 duration-200 text-3xl cursor-pointer"
-              fontSize="large"
+            <audio
+              id={`audio-${song._id}`}
+              src={`http://localhost:3000/uploads/${song.musicAudio}`}
+              className="hidden"
             />
+            <button
+              onClick={() =>
+                togglePlay(
+                  document.getElementById(`audio-${song._id}`),
+                  song._id
+                )
+              }
+              className="bg-pink-600 hover:bg-blue-600 text-white font-bold rounded-full h-8 w-8 flex items-center justify-center duration-150"
+            >
+              {playingAudio && playingAudio.id === `audio-${song._id}` ? (
+                <FaPause/>
+              ) : (
+                <FaPlay/>
+              )}
+            </button>
           </div>
         </div>
       </div>

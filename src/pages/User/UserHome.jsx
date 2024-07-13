@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axiosInstance from "../../instance/axiosInstance";
 import Header from "../../components/Divs/Header";
 import Footer from "../../components/Divs/Footer";
 import Banner from "../../assets/user/banner.png";
@@ -23,7 +24,37 @@ import { MdOutlineCloudDownload } from "react-icons/md";
 import { MdOutlineImportantDevices } from "react-icons/md";
 import { MdOutlineLiveTv } from "react-icons/md";
 import { PiMusicNotesFill } from "react-icons/pi";
+
 function UserHome() {
+  const [latestSongs, setLatestSongs] = useState([]);
+  const [playingAudio, setPlayingAudio] = useState(null);
+
+  useEffect(() => {
+    const fetchSongs = async () => {
+      try {
+        const response = await axiosInstance.get("/latestSongs");
+        setLatestSongs(response.data);
+        console.log('latestsongs:',latestSongs);
+      } catch (error) {
+        console.error("Error fetching songs:", error);
+      }
+    };
+    fetchSongs();
+  }, []);
+
+  const togglePlay = (audioElement) => {
+    if (playingAudio && playingAudio !== audioElement) {
+      playingAudio.pause();
+    }
+    if (audioElement.paused) {
+      audioElement.play();
+      setPlayingAudio(audioElement);
+    } else {
+      audioElement.pause();
+      setPlayingAudio(null);
+    }
+  };
+
   return (
     <div>
       <Header />
@@ -59,54 +90,14 @@ function UserHome() {
             Latest Hits
           </h1>
           <div className="mt-5 w-full justify-between grid xxs:grid-cols-1 xxs:gap-5 sm:pr-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-9">
-            <MusicCard
-              Img={Sajni}
-              song="Sajni"
-              movie="Laapataa Ladies"
-              artists="Arijith Singh,Ram Sampath"
-            />
-            <MusicCard
-              Img={Sajni}
-              song="Sajni"
-              movie="Laapataa Ladies"
-              artists="Arijith Singh,Ram Sampath"
-            />
-            <MusicCard
-              Img={Sajni}
-              song="Sajni"
-              movie="Laapataa Ladies"
-              artists="Arijith Singh,Ram Sampath"
-            />
-            <MusicCard
-              Img={Sajni}
-              song="Sajni"
-              movie="Laapataa Ladies"
-              artists="Arijith Singh,Ram Sampath"
-            />
-            <MusicCard
-              Img={Sajni}
-              song="Sajni"
-              movie="Laapataa Ladies"
-              artists="Arijith Singh,Ram Sampath"
-            />
-            <MusicCard
-              Img={Sajni}
-              song="Sajni"
-              movie="Laapataa Ladies"
-              artists="Arijith Singh,Ram Sampath"
-            />
-            <MusicCard
-              Img={Sajni}
-              song="Sajni"
-              movie="Laapataa Ladies"
-              artists="Arijith Singh,Ram Sampath"
-            />
-            <MusicCard
-              Img={Sajni}
-              song="Sajni"
-              movie="Laapataa Ladies"
-              artists="Arijith Singh,Ram Sampath"
-            />
+            {latestSongs.map((song) => (
+              <MusicCard
+                key={song._id}
+                song={song}
+                playingAudio={playingAudio}
+                togglePlay={togglePlay}
+              />
+            ))}
           </div>
         </div>
         <div className="w-full flex flex-col items-start xxs:px-2 xs:px-5 sm:px-10 md:px-8 lg:pl-5 xl:px-10 py-10">
@@ -192,10 +183,10 @@ function UserHome() {
             than ever to grow your fanbase. Join MeloVibe now and let your music
             be heard around the world!"
           </h1>
-          <Link to={'/artist/login'}>
-          <Button classname="xxs:mt-5 xs:mt-10 py-3 px-6 bg-gradient-to-r from-pink-500 to-blue-900">
-            Join As Artist
-          </Button>
+          <Link to={"/artist/login"}>
+            <Button classname="xxs:mt-5 xs:mt-10 py-3 px-6 bg-gradient-to-r from-pink-500 to-blue-900">
+              Join As Artist
+            </Button>
           </Link>
         </div>
         <div className="px-1 grid grid-cols-2 gap-x-2 gap-y-5 xs:gap-y-7 md:grid-cols-4 lg:gap-10 items-center justify-center mt-28 xl:gap-20">

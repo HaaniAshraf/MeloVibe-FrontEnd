@@ -100,7 +100,6 @@ export const NewPasswordValidation = Yup.object().shape({
 export const MusicValidationSchema = Yup.object().shape({
   songImage: Yup.string().required("Song image is required"),
   songName: Yup.string().required("Song name is required"),
-  artistName: Yup.string().required("Artist name is required"),
   musicCategory: Yup.string().required("Music category is required"),
   musicAudio: Yup.string().required("Music audio file is required"),
 });

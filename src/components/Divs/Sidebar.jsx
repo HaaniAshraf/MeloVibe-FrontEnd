@@ -77,7 +77,7 @@ function Sidebar() {
       </div>
       <div
         ref={sidebarRef}
-        className={`fixed inset-y-0 left-0 w-64 bg-gray-950 z-10 text-white transition-all duration-300 lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 w-[16rem] bg-gray-950 z-10 text-white transition-all duration-300 lg:translate-x-0 ${
           isOpen ? "" : "-translate-x-full"
         }`}
       >
@@ -113,7 +113,7 @@ function Sidebar() {
                 </li>
                 <li>
                   <NavLink
-                    to="/artist/add-music"
+                    to="/artist/my-songs"
                     className="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-900 hover:text-pink-400 duration-150 rounded text-lg"
                     activeClassName="bg-gray-800"
                   >

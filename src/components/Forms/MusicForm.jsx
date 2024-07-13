@@ -11,7 +11,7 @@ import { useArtist } from "../../context/ArtistContext";
 const initialValues = {
   songImage: "",
   songName: "",
-  artistName: "",
+  album: "",
   musicCategory: "",
   musicAudio: "",
 };
@@ -39,7 +39,6 @@ const MusicForm = () => {
   const handleImageClick = () => {
     fileInputRef.current.click();
   };
-
   const handleAudioClick = () => {
     audioInputRef.current.click();
   };
@@ -55,7 +54,6 @@ const MusicForm = () => {
       reader.readAsDataURL(file);
     }
   };
-
   const handleAudioChange = (event, setFieldValue) => {
     const file = event.currentTarget.files[0];
     if (file) {
@@ -96,7 +94,9 @@ const MusicForm = () => {
       const formData = new FormData();
       formData.append("songImage", values.songImage);
       formData.append("songName", values.songName);
-      formData.append("artistName", values.artistName);
+      formData.append("artistName", artist.name);
+      formData.append("artistId", artistId);
+      formData.append("album", values.album);
       formData.append("musicCategory", values.musicCategory);
       formData.append("musicAudio", values.musicAudio);
       try {
@@ -128,9 +128,9 @@ const MusicForm = () => {
         validateOnBlur={false}
       >
         {({ setFieldValue, values }) => (
-          <Form className="mt-12 text-white flex flex-col gap-5 bg-gray-950 px-5 py-5 rounded-md items-center justify-center">
+          <Form className="mt-3 lg:mt-8 text-white flex flex-col gap-4 lg:gap-5 bg-gray-950 px-5 py-3 sm:py-4 md:py-5 rounded-md items-center justify-center">
             <div
-              className="h-28 w-28 rounded-full bg-gray-900 flex flex-col items-center justify-center text-gray-600 cursor-pointer overflow-hidden"
+              className="h-20 lg:h-28 w-20 lg:w-28 rounded-full bg-gray-900 flex flex-col items-center justify-center text-gray-600 cursor-pointer overflow-hidden"
               onClick={handleImageClick}
             >
               {previewImage ? (
@@ -141,7 +141,7 @@ const MusicForm = () => {
                 />
               ) : (
                 <>
-                  <h1 className="font-semibold">Music Image</h1>
+                  <h1 className="font-semibold hidden lg:block">Music Image</h1>
                   <PiMusicNotesPlusFill className="text-3xl" />
                 </>
               )}
@@ -169,6 +169,13 @@ const MusicForm = () => {
               value={artist.name}
               disabled
             />
+            <Field
+              type="text"
+              id="album"
+              name="album"
+              className="bg-gray-900 pl-1 h-8 rounded-sm w-64 placeholder:text-gray-600"
+              placeholder="Album name"
+            />
             <div className="relative w-64" ref={dropdownRef}>
               <div
                 className="bg-gray-900 w-full h-12 rounded-sm flex items-center justify-between px-3 cursor-pointer"
@@ -190,38 +197,42 @@ const MusicForm = () => {
                 </span>
               </div>
               {isCategoryOpen && (
-                <div className="absolute top-full left-0 w-full bg-gray-900 rounded-sm mt-1 shadow-lg z-10">
-                  {[
-                    "Monsoon",
-                    "Celebration",
-                    "Travel",
-                    "Party",
-                    "Peace",
-                    "Love",
-                    "Friendship",
-                    "Other",
-                  ].map((category) => (
-                    <div
-                      key={category}
-                      className="px-3 py-1 hover:bg-gray-800 cursor-pointer"
-                      onClick={() => {
-                        setFieldValue("musicCategory", category);
-                        setIsCategoryOpen(false);
-                      }}
-                    >
-                      {category}
-                    </div>
-                  ))}
+                <div className="absolute top-full left-0 w-full bg-gray-900 rounded-sm mt-1 shadow-lg z-10 p-2">
+                  <div className="grid grid-cols-2 gap-2">
+                    {[
+                      "Monsoon",
+                      "Celebration",
+                      "Travel",
+                      "Party",
+                      "Peace",
+                      "Love",
+                      "Friendship",
+                      "Other",
+                    ].map((category) => (
+                      <div
+                        key={category}
+                        className="px-3 py-2 hover:bg-gray-800 cursor-pointer text-sm rounded"
+                        onClick={() => {
+                          setFieldValue("musicCategory", category);
+                          setIsCategoryOpen(false);
+                        }}
+                      >
+                        {category}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
             <div
-              className="bg-gray-900 w-64 h-12 rounded-sm flex items-center justify-between px-3 cursor-pointer"
+              className={`bg-gray-900 w-64 h-12 rounded-sm flex items-center justify-between px-3 cursor-pointer ${
+                audioFileName ? "text-white" : "text-gray-600"
+              }`}
               onClick={handleAudioClick}
             >
               <div className="flex items-center">
                 <FaMusic className="text-gray-700 mr-2" />
-                <span className="text-gray-600 truncate">
+                <span className="truncate">
                   {audioFileName || "Choose audio file"}
                 </span>
               </div>

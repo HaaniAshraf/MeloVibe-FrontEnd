@@ -10,6 +10,7 @@ import ArtistHome from "../pages/Artist/ArtistHome";
 import ArtistLayout from "../layout/ArtistLayout";
 import ArtistProfile from "../pages/Artist/ArtistProfile";
 import AddMusic from "../pages/Artist/AddMusic";
+import SongsList from "../pages/Artist/SongsList";
 
 function ArtistRouter() {
   return (
@@ -24,6 +25,7 @@ function ArtistRouter() {
           <Route path="/artist-home" element={<ArtistHome />} />
           <Route path="/artist-profile" element={<ArtistProfile />} />
           <Route path="/add-music" element={<AddMusic />} />
+          <Route path="/my-songs" element={<SongsList />} />
         </Route>
       </Routes>
     </ArtistProvider>
