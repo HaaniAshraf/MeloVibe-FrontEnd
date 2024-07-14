@@ -7,7 +7,6 @@ import Collage from "../../assets/user/collage.jpg";
 import Button from "../../components/Buttons/Button";
 import { Link } from "react-router-dom";
 import MusicCard from "../../components/Cards/MusicCard";
-import Sajni from "../../assets/user/musics/Sajni.jpg";
 import ArtistCard from "../../components/Cards/ArtistCard";
 import Arijith from "../../assets/user/artists/arijith.png";
 import ArtistSection from "../../assets/user/artistSection.png";
@@ -24,6 +23,7 @@ import { MdOutlineCloudDownload } from "react-icons/md";
 import { MdOutlineImportantDevices } from "react-icons/md";
 import { MdOutlineLiveTv } from "react-icons/md";
 import { PiMusicNotesFill } from "react-icons/pi";
+import ArtistCarousel from "../../components/Carousels/ArtistCarousel";
 
 function UserHome() {
   const [latestSongs, setLatestSongs] = useState([]);
@@ -34,7 +34,6 @@ function UserHome() {
       try {
         const response = await axiosInstance.get("/latestSongs");
         setLatestSongs(response.data);
-        console.log('latestsongs:',latestSongs);
       } catch (error) {
         console.error("Error fetching songs:", error);
       }
@@ -100,37 +99,12 @@ function UserHome() {
             ))}
           </div>
         </div>
-        <div className="w-full flex flex-col items-start xxs:px-2 xs:px-5 sm:px-10 md:px-8 lg:pl-5 xl:px-10 py-10">
+        <div className="w-full flex flex-col items-start px-1 sm:px-5 py-10">
           <h1 className="text-gray-300 font-bold text-2xl border-b-2 pb-1">
             Popular Artists
           </h1>
-          <div className="flex xxs:px-10 sm:px-0 gap-6 mt-7 items-center w-full">
-            <div className="grid xxs:grid-cols-2 xxs:gap-12 sm:gap-7 sm:grid-cols-2 md:grid-cols-3 md:gap-5 lg:grid-cols-6 w-full justify-between">
-              <ArtistCard
-                Img={Arijith}
-                gradient="linear-gradient(135deg, rgb(255, 168, 168) 10%, rgb(252, 255, 0) 100%)"
-              />
-              <ArtistCard
-                Img={Arijith}
-                gradient="linear-gradient(-20deg, #d558c8 0%, #24d292 100%)"
-              />
-              <ArtistCard
-                Img={Arijith}
-                gradient="radial-gradient(circle at 52.1% -29.6%, rgb(144, 17, 105) 0%, rgb(51, 0, 131) 100.2%)"
-              />
-              <ArtistCard
-                Img={Arijith}
-                gradient="linear-gradient(to top, #accbee 0%, #e7f0fd 100%)"
-              />
-              <ArtistCard
-                Img={Arijith}
-                gradient="radial-gradient(circle at 10% 20%, rgb(255, 19, 120) 0%, rgb(0, 0, 0) 90.5%)"
-              />
-              <ArtistCard
-                Img={Arijith}
-                gradient="linear-gradient(109.6deg, rgb(27, 27, 79) 11.2%, rgb(120, 201, 244) 100.2%)"
-              />
-            </div>
+          <div className="w-full overflow-hidden mt-8">
+            <ArtistCarousel />
           </div>
         </div>
         <div

@@ -9,19 +9,21 @@ function MusicCard({ song, playingAudio, togglePlay }) {
       <img
         src={`http://localhost:3000/uploads/${song.songImage}`}
         alt={song.songName}
-        className="w-32 h-32 object-cover"
+        className="w-32 h-32 object-cover rounded-md"
       />
       <div className="flex flex-col justify-between w-3/4">
         <div className="flex flex-col">
-          <h1 className="text-white font-semibold text-lg">
+          <h1 className="text-white font-semibold text-xl">
             {song.songName}
             {song.album && (
-              <span className="text-sm sm:text-base text-gray-400 block sm:inline sm:ml-1">
+              <span className="text-sm text-gray-400 ml-1">
                 - {song.album}
               </span>
             )}
           </h1>
-          <h1 className="text-gray-400 text-sm">{song.artistName}</h1>
+          <h1 className="text-gray-400 text-base">
+            {song.artistName}
+          </h1>
         </div>
         <div className="flex justify-between items-center mt-1">
           <div className="flex gap-2">
@@ -41,12 +43,12 @@ function MusicCard({ song, playingAudio, togglePlay }) {
                   song._id
                 )
               }
-              className="bg-pink-600 hover:bg-blue-600 text-white font-bold rounded-full h-8 w-8 flex items-center justify-center duration-150"
+              className="bg-pink-600 hover:bg-blue-600 text-white font-bold rounded-full h-10 w-10 flex items-center justify-center transition duration-150"
             >
               {playingAudio && playingAudio.id === `audio-${song._id}` ? (
-                <FaPause/>
+                <FaPause />
               ) : (
-                <FaPlay/>
+                <FaPlay />
               )}
             </button>
           </div>
